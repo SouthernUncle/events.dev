@@ -17,6 +17,8 @@ class CalendarEventsTableSeeder extends Seeder {
 				'start' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 week'),
 				'end' => $faker->dateTimeBetween($startDate = '+1 week', $endDate = '+2 weeks'),
 				'price' => $faker->numberBetween(10,200),
+				'user_id' => $faker->numberBetween($min = 1, $max = 4),
+				'location_id' => $faker->numberBetween($min = 1, $max = 20),
 			]);
 		}
 	}

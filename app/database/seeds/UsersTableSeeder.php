@@ -9,11 +9,12 @@ class UsersTableSeeder extends Seeder {
 	{
 		User::create([
 
-			'username'   => $_ENV['USER_FIRSTNAME'],
-			'first_name' => $_ENV['USER_LASTNAME'],
-			'last_name'  => $_ENV['USER_EMAIL'],
-			'email'      => $_ENV['USER_USERNAME'],
+			'username'   => $_ENV['USER_USERNAME'],
+			'first_name' => $_ENV['USER_FIRSTNAME'],
+			'last_name'  => $_ENV['USER_LASTNAME'],
+			'email'      => $_ENV['USER_EMAIL'],
 			'password'   => $_ENV['USER_PASSWORD'],
+			'password_confirmation'   => $_ENV['USER_PASSWORD'],
 		]);
 
 		$faker = Faker::create('en_EN');
@@ -26,7 +27,8 @@ class UsersTableSeeder extends Seeder {
 				'first_name' => $faker->firstName,
 				'last_name'  => $faker->lastName,
 				'email'      => $faker->freeEmail,
-				'password'   => $faker->password,
+				'password'   => $_ENV['USER_PASSWORD'],
+				'password_confirmation'   => $_ENV['USER_PASSWORD'],
 			]);
 		}
 	}

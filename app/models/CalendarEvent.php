@@ -8,10 +8,10 @@ class CalendarEvent extends Model {
 	protected $table = 'calendar_events';
 
 	protected $rules = array(
-		'title' => 'required|max:32',
-		'description' => 'required|max:255|min:20',
+		'title' => 'required',
+		'description' => 'required',
 		'start' => 'required',
 		'end' => 'required',
-		'price' => 'required|max:200|min:10',
+		'price' => 'required',
 	);
 }
