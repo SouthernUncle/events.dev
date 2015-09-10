@@ -9,7 +9,7 @@ class LocationsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 20) as $index)
 		{
 			Location::create([
 
@@ -17,7 +17,7 @@ class LocationsTableSeeder extends Seeder {
 				'address' => $faker->streetAddress,
 				'city' => $faker->city,
 				'state' => $faker->stateAbbr,
-				'zip' => $faker->postcode,
+				'zip' => $faker->numberBetween($min = 12345, $max = 96543),
 			]);
 		}
 	}
