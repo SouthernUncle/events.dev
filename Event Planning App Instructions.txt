@@ -12,19 +12,20 @@ Models:
 	- last_name
 	- email
 	- password
+	- username
 
 - CalendarEvents
 	- *NOT* Events (Laravel uses)
 	- start_date_time
 	- end_date_time
 	- title
-	- descr
+	- description
 	- price
 	- user_id
 	- location_id
 
 - Locations
-	- title
+	- place
 	- address
 	- city
 	- state
