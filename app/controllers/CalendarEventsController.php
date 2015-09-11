@@ -3,105 +3,105 @@
 class CalendarEventsController extends \BaseController {
 
 	/**
-	 * Display a listing of calendarevents
+	 * Display a listing of calendarEvents
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$calendarevents = Calendarevent::all();
+		$calendarEvents = CalendarEvent::all();
 
-		return View::make('calendarevents.index', compact('calendarevents'));
+		return View::make('calendarEvents.index', compact('calendarEvents'));
 	}
 
 	/**
-	 * Show the form for creating a new calendarevent
+	 * Show the form for creating a new calendarEvent
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return View::make('calendarevents.create');
+		return View::make('calendarEvents.create');
 	}
 
 	/**
-	 * Store a newly created calendarevent in storage.
+	 * Store a newly created calendarEvent in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Calendarevent::$rules);
+		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Calendarevent::create($data);
+		CalendarEvent::create($data);
 
-		return Redirect::route('calendarevents.index');
+		return Redirect::route('calendarEvents.index');
 	}
 
 	/**
-	 * Display the specified calendarevent.
+	 * Display the specified calendarEvent.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		$calendarevent = Calendarevent::findOrFail($id);
+		$calendarEvent = CalendarEvent::findOrFail($id);
 
-		return View::make('calendarevents.show', compact('calendarevent'));
+		return View::make('calendarEvents.show', compact('calendarEvent'));
 	}
 
 	/**
-	 * Show the form for editing the specified calendarevent.
+	 * Show the form for editing the specified calendarEvent.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		$calendarevent = Calendarevent::find($id);
+		$calendarEvent = CalendarEvent::find($id);
 
-		return View::make('calendarevents.edit', compact('calendarevent'));
+		return View::make('calendarEvents.edit', compact('calendarEvent'));
 	}
 
 	/**
-	 * Update the specified calendarevent in storage.
+	 * Update the specified calendarEvent in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$calendarevent = Calendarevent::findOrFail($id);
+		$calendarEvent = CalendarEvent::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Calendarevent::$rules);
+		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		$calendarevent->update($data);
+		$calendarEvent->update($data);
 
-		return Redirect::route('calendarevents.index');
+		return Redirect::route('calendarEvents.index');
 	}
 
 	/**
-	 * Remove the specified calendarevent from storage.
+	 * Remove the specified calendarEvent from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Calendarevent::destroy($id);
+		CalendarEvent::destroy($id);
 
-		return Redirect::route('calendarevents.index');
+		return Redirect::route('calendarEvents.index');
 	}
 
 }

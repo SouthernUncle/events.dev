@@ -86,6 +86,3 @@ Steps:
 			"use \Esensi\Model\Model;"
 
 **. Initialize Git repository (follow Git instructions)
-
-
-
