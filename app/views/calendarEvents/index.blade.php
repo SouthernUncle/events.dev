@@ -17,15 +17,15 @@
 @stop
 
 @section('image_url')
-''
+	'/img/concerts1.jpg'
 @stop
 
 @section('content')
 	<table>
 		<thead>
 			<tr>
-				<th>Event Name</th>
-				<th>Location</th>
+				<th>Artist</th>
+				<th>Venue</th>
 				<th>Start</th>
 				<th>End</th>
 				<th>City</th>
@@ -36,8 +36,8 @@
 			@foreach ($calendarEvents as $ce)
 			<tr>
 				<td>{{ $ce->title }}</td>
-				<td></td>
-				<td></td>
+				<td>{{ $ce->location->place }}</td>
+				<td>{{ $ce->start }}</td>
 				<td></td>
 			</tr>
 			@endforeach
