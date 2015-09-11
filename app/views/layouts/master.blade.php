@@ -80,20 +80,20 @@
     </nav>
 
 
-<header class="intro-header" style="background-image: url(@yield('image_url'))">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading" id="forceUp">
-                    <h1>@yield('heading')</h1>
-                    <hr class="small">
-                    <span class="subheading">@yield('subheading')</span>
+    <header class="intro-header" style="background-image: url(@yield('image_url'))">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading" id="forceUp">
+                        <h1>@yield('heading')</h1>
+                        <hr class="small">
+                        <span class="subheading">@yield('subheading')</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    @yield('credit')
-</header>
+        @yield('credit')
+    </header>
 
 
     <div class="container main">
@@ -117,12 +117,12 @@
 
 
 
-<hr class="featurette-divider">
+    <hr class="featurette-divider">
 
 
 
-<footer class="footer-container container">
-    <div class="row">
+    <footer class="footer-container container">
+        <div class="row">
             <div class="col-xs-4">
                 <a href="#"><span class="glyphicon glyphicon-chevron-up"></span>Back to top</a>
             </div>
@@ -140,8 +140,8 @@
                     <p class="squeeze"><a href="/login">Login</a></p>
                 @endif
             </div>
-    </div>
-</footer>
+        </div>
+    </footer>
 
     {{-- JS/JQuery --}}
     <script src="/js/jquery-2.1.4.min.js"></script>
