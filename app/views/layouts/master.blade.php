@@ -129,9 +129,9 @@
             
             <div class="col-xs-4">
                 <p class="squeeze text-center">
-                    <a href="http://github.com/j-womack"><span class="fa fa-github-square fa-2x grey"></span></a>
-                    <a href="https://www.linkedin.com/pub/joshua-womack/71/946/704"><span class="fa fa-linkedin-square fa-2x grey"></span></a>
-                    <a href="http://instagram.com/noisefights"><span class="fa fa-instagram fa-2x grey"></span></a>
+                    <a href=""><span class="fa fa-github-square fa-2x grey"></span></a>
+                    <a href=""><span class="fa fa-linkedin-square fa-2x grey"></span></a>
+                    <a href=""><span class="fa fa-instagram fa-2x grey"></span></a>
                 </p>
             </div>
 
