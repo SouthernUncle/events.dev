@@ -9,7 +9,7 @@ class CalendarEventsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 50) as $index)
 		{
 			CalendarEvent::create([
 				'title' => $faker->catchPhrase,
