@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
 // GET
 // HOMEPAGE
 Route::get('/', 'CalendarEventsController@index');
