@@ -47,11 +47,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="searchBar">
-                    {{ Form::open(array('action' => 'PostsController@index', 'method' => 'get')) }}
+{{--                     {{ Form::open(array('action' => 'PostsController@index', 'method' => 'get')) }}
     
                         {{ Form::text('search', null, ['class' => 'form-control search']) }}
 
-                    {{ Form::close() }}
+                    {{ Form::close() }} --}}
                     </li>
 
                     <li>
