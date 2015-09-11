@@ -35,14 +35,18 @@
 		<tbody>
 			@foreach ($calendarEvents as $ce)
 			<tr>
-				<td>{{ $ce->title }}</td>
+				<td>
+					<a href="{{{ action('CalendarEventsController@show', $ce->id) }}}">
+						{{ $ce->title }}
+					</a>
+				</td>
 				<td>{{ $ce->location->place }}</td>
 				<td>{{ $ce->start }}</td>
-				<td></td>
+				<td>{{ $ce->end }}</td>
+				<td>{{ $ce->location->city }} {{ $ce->location->state }}</td>
 			</tr>
 			@endforeach
 		</tbody>
-
 	</table>
 @stop
 
