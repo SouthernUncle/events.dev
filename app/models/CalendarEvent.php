@@ -1,6 +1,7 @@
 <?php
 
 use \Esensi\Model\Model;
+use Carbon\Carbon as Carbon;
 
 class CalendarEvent extends Model {
 
@@ -22,6 +23,14 @@ class CalendarEvent extends Model {
 	    return $this->belongsTo('Location');
 	}
 
+	public static function formatDate($date)
+	{
+		$newDate = Carbon::createFromFormat('Y-m-d H:i:s', $date);
+
+		return $newDate;
+
+	}
+
 	/**
 	 * Rules
 	 *
@@ -30,7 +39,6 @@ class CalendarEvent extends Model {
 		'title' => 'required',
 		'description' => 'required',
 		'start' => 'required',
-		'end' => 'required',
 		'price' => 'required',
 	);
 }

@@ -31,6 +31,11 @@ class CreateCalendarEventUserTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::table('calendar_event_user', function(Blueprint $table) {
+			$table->dropForeign('calendar_event_user_calendar_event_id_foreign');
+			$table->dropForeign('calendar_event_user_user_id_foreign');
+		});
+
 		Schema::drop('calendar_event_user');
 	}
 

@@ -5,15 +5,15 @@
 @stop
 
 @section('style')
-
+	<link rel="stylesheet" type="text/css" href="/css/calendar_events_index.css">
 @stop
 
 @section('heading')
-	Awesome Events
+	LIVE
 @stop
 
 @section('subheading')
-	blah blah blah
+	Awesome Music in Awesome Venues
 @stop
 
 @section('image_url')
@@ -21,13 +21,12 @@
 @stop
 
 @section('content')
-	<table>
+	<table class="table table-responsive">
 		<thead>
 			<tr>
 				<th>Artist</th>
 				<th>Venue</th>
 				<th>Start</th>
-				<th>End</th>
 				<th>City</th>
 
 			</tr>
@@ -37,13 +36,12 @@
 			<tr>
 				<td>
 					<a href="{{{ action('CalendarEventsController@show', $ce->id) }}}">
-						{{ $ce->title }}
+						{{{ $ce->title }}}
 					</a>
 				</td>
-				<td>{{ $ce->location->place }}</td>
-				<td>{{ $ce->start }}</td>
-				<td>{{ $ce->end }}</td>
-				<td>{{ $ce->location->city }} {{ $ce->location->state }}</td>
+				<td>{{{ $ce->location->place }}}</td>
+				<td>{{{ CalendarEvent::formatDate($ce->start)->format('D. M. jS, Y') }}}</td>
+				<td>{{{ $ce->location->city }}}, {{{ $ce->location->state }}}</td>
 			</tr>
 			@endforeach
 		</tbody>
