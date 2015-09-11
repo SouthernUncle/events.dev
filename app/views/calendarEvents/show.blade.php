@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	{{ $calendarEvent->title }}
+	{{{ $calendarEvent->title }}}
 @stop
 
 @section('style')
@@ -9,11 +9,13 @@
 @stop
 
 @section('heading')
-	{{ $calendarEvent->title }}
+	{{{ $calendarEvent->title }}}
 @stop
 
 @section('subheading')
-	{{ $calendarEvent->location->city }}, {{ $calendarEvent->location->state }} @ {{ $calendarEvent->location->place }}
+	{{{ $calendarEvent->location->place }}}
+	-in-
+	{{{ $calendarEvent->location->city }}}, {{{ $calendarEvent->location->state }}} 
 @stop
 
 @section('image_url')
@@ -21,10 +23,9 @@
 @stop
 
 @section('content')
-	<h1>{{ $calendarEvent->title }}</h1>
-	<h3>{{ $calendarEvent->description }}</h3>
-	<p>Begins: {{ $calendarEvent->start }}</p>
-	<p>Ends: {{ $calendarEvent->end }}</p>
+	<h1>{{{ $calendarEvent->title }}}</h1>
+	<h3>{{{ $calendarEvent->description }}}</h3>
+	<p>{{{ CalendarEvent::formatDate($calendarEvent->start)->format('l, F jS Y @ h A') }}}</p>
 	<p>
 		<a href="">
 			RSVP

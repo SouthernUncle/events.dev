@@ -32,8 +32,8 @@ class AddLocationIdToCalendarEvents extends Migration {
 	{
 		Schema::table('calendar_events', function(Blueprint $table)
 		{
-			$table->dropColumn('location_id');	
-			$table->dropColumn('user_id');
+			$table->dropForeign('calendar_events_location_id_foreign');	
+			$table->dropForeign('calendar_events_user_id_foreign');
 		});
 	}
 

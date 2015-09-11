@@ -17,9 +17,9 @@ class CreateCalendarEventsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->text('description');
-			$table->datetime('start');
-			$table->datetime('end');
 			$table->decimal('price');
+			$table->datetime('start');
+			$table->string('img_url', 100)->nullable();
 			$table->timestamps();
 		});
 	}
