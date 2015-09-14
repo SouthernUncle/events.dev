@@ -25,7 +25,7 @@
 @section('content')
 	<h1>{{{ $calendarEvent->title }}}</h1>
 	<h3>{{{ $calendarEvent->description }}}</h3>
-	<p>{{{ CalendarEvent::formatDate($calendarEvent->start)->format('l, F jS Y @ h A') }}}</p>
+	<p>{{{ CalendarEvent::formatDate($calendarEvent->start)->format('l, F jS Y @ g A') }}}</p>
 	<p>
 		<a href="">
 			RSVP

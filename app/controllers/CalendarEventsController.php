@@ -9,7 +9,23 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$calendarEvents = CalendarEvent::all();
+		$query = CalendarEvent::with('location', 'user');
+
+		$search = Input::get('search');
+
+		if($search) {
+			$query->where('title', 'like', "%$search%");
+			$query->orWhere('description', 'like', "%$search%");
+			$query->orWhere('start', 'like', "%$search%");
+			$query->orWhereHas('location', function($q) use ($search) {
+				$q->where('city', 'like', "%$search%");
+			});
+			$query->orWhereHas('user', function($q) use ($search) {
+				$q->where('username', 'like', "%$search%");
+			});
+		}
+
+		$calendarEvents = $query->orderBy('start')->get();
 
 		return View::make('calendarEvents.index', compact('calendarEvents'));
 	}

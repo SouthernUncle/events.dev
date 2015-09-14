@@ -21,9 +21,11 @@ Route::get('/login', 'HomeController@showLogin');
 // LOGOUT
 Route::get('/logout', 'HomeController@doLogout');
 
+
 // POST
 // LOGIN
 Route::post('login', 'HomeController@doLogin');
+
 
 // RESOURCE
 // CALENDAR EVENT

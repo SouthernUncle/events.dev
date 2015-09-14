@@ -26,13 +26,28 @@ Create a New Post
 '/img/pen.jpg'
 @stop
 
+@section('style')
+
+@stop
+
+@section('heading')
+	Create Event
+@stop
+
+@section('subheading')
+
+@stop
+
+@section('image_url')
+'/img/concerts2.jpg'
+@stop
+
 @section('content')
 
-    {{ Form::open(array('action' => 'CalenderEventsController@store','files'=>true)) }}
-    
-        @include('posts.create-edit-form')
+@stop
 
-    {{ Form::close() }}
+@section('js')
+
 @stop
 
 @section('js')

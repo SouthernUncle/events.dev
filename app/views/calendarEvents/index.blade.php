@@ -26,7 +26,8 @@
 			<tr>
 				<th>Artist</th>
 				<th>Venue</th>
-				<th>Start</th>
+				<th>Date</th>
+				<th>Time</th>
 				<th>City</th>
 
 			</tr>
@@ -41,6 +42,7 @@
 				</td>
 				<td>{{{ $ce->location->place }}}</td>
 				<td>{{{ CalendarEvent::formatDate($ce->start)->format('D. M. jS, Y') }}}</td>
+				<td>{{{ CalendarEvent::formatDate($ce->start)->format('g A') }}}</td>
 				<td>{{{ $ce->location->city }}}, {{{ $ce->location->state }}}</td>
 			</tr>
 			@endforeach
