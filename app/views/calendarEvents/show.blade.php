@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	{{{ $calendarEvent->title }}}
+	{{{ $ce->title }}}
 @stop
 
 @section('style')
@@ -9,23 +9,23 @@
 @stop
 
 @section('heading')
-	{{{ $calendarEvent->title }}}
+	{{{ $ce->title }}}
 @stop
 
 @section('subheading')
-	{{{ $calendarEvent->location->place }}}
+	{{{ $ce->location->place }}}
 	-in-
-	{{{ $calendarEvent->location->city }}}, {{{ $calendarEvent->location->state }}} 
+	{{{ $ce->location->city }}}, {{{ $ce->location->state }}} 
 @stop
 
 @section('image_url')
-	'/img/concerts3.jpg'
+'{{{ $ce->img_url }}}'
 @stop
 
 @section('content')
-	<h1>{{{ $calendarEvent->title }}}</h1>
-	<h3>{{{ $calendarEvent->description }}}</h3>
-	<p>{{{ CalendarEvent::formatDate($calendarEvent->start)->format('l, F jS Y @ g A') }}}</p>
+	<h1>{{{ $ce->title }}}</h1>
+	<h3>{{{ $ce->description }}}</h3>
+	<p>{{{ CalendarEvent::formatDate($ce->start)->format('l, F jS Y @ g A') }}}</p>
 	<p>
 		<a href="">
 			RSVP

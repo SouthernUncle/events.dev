@@ -13,13 +13,19 @@
 {{ Form::label('price', 'Price ($)') }}
 {{ Form::number('price', null, ['class' => 'form-control']) }}
 
-    <label>Date and Time</label>
+<label for="start">Date and Time</label>
 <div>
-    <input id="datetimepicker" type="text" >
+    <input id="datetimepicker" class="form-control" name="start" type="text" >
 </div>
 
-{{ Form::label('location', 'Location') }}
-{{ Form::text('location', null, ['class' => 'form-control']) }}
+<label for="location">Location</label>
+<div>
+    <select class="form-control" name="location">
+        @foreach ($locations as $location)
+            <option value="{{{ $location->id }}}">{{{ $location->place }}}</option>
+        @endforeach
+    </select>
+</div>
 
 {{ Form::label('file','File',array('id'=>'','class'=>'')) }}
 {{ Form::file('file','',array('id'=>'','class'=>'')) }}

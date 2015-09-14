@@ -43,7 +43,10 @@ Create a New Event
 <script type="text/javascript">
     (function () {
         
-        jQuery('#datetimepicker').datetimepicker();
+        jQuery('#datetimepicker').datetimepicker({
+            minDate: 0,
+            format: 'Y-m-d H:i:s'
+        });
 
         var converter = new Markdown.Converter();
         
