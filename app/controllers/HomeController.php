@@ -17,7 +17,12 @@ class HomeController extends BaseController {
 
 	public function showLogin()
 	{
-		View::make('login');
+		if(Auth::check()) {
+			Session::flash('errorMessage', 'You are already logged in!');
+			return Redirect::action('HomeController@showHome');
+		}
+
+		return View::make('login');
 	}
 
 	public function doLogin()

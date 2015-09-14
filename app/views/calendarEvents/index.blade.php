@@ -24,6 +24,7 @@
 	<table class="table table-responsive">
 		<thead>
 			<tr>
+				<th>#</th>
 				<th>Artist</th>
 				<th>Venue</th>
 				<th>Date</th>
@@ -33,8 +34,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = 0; ?>
 			@foreach ($calendarEvents as $ce)
 			<tr>
+				<td>{{{ $i+=1 }}}</td>
 				<td>
 					<a href="{{{ action('CalendarEventsController@show', $ce->id) }}}">
 						{{{ $ce->title }}}
