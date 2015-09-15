@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends \BaseController {
+class UsersController extends BaseController {
 
 	/**
 	 * Display a listing of users
@@ -21,6 +21,11 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
+		if(Auth::check()) {
+			Session::flash('errorMessage', 'Please log out before creating a new account.');
+			return Redirect::action('HomeController@showHome');
+		}
+
 		return View::make('users.create');
 	}
 
@@ -31,16 +36,32 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), User::$rules);
+		// create the validator
+	    $validator = Validator::make(Input::all(), User::$rules);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+	    // attempt validation
+	    if ($validator->fails()) {
+			Session::flash('errorMessage', 'Hmmm...something went wrong. Please check the message(s) below to fix:');
+			Log::info('User create failed');
+	        return Redirect::back()->withInput()->withErrors($validator);
 
-		User::create($data);
+	    }
+	        
+        // validation succeeded, create and save the user
+		User::create([
+			'first_name' 			  => Input::get('first_name'),
+			'last_name'  			  => Input::get('last_name'),
+			'email'      			  => Input::get('email'),
+			'username'   			  => Input::get('username'),
+			'password'   			  => Input::get('password'),
+			'password_confirmation'   => Input::get('password_confirmation'),
+		]);
 
-		return Redirect::route('users.index');
+		Log::info('User id: ' . $user->id . ' created.', array('newUser' => Input::get('username')));
+
+		Session::flash('successMessage', 'Your account was created successfully! Please log in below:');
+
+		return Redirect::action('HomeController@showLogin');
 	}
 
 	/**
@@ -53,7 +74,12 @@ class UsersController extends \BaseController {
 	{
 		$user = User::findOrFail($id);
 
-		return View::make('users.show', compact('user'));
+		$query = CalendarEvent::with('user');
+		$query->where('user_id', $user->id);
+
+		$calendarEvents = $query->orderBy('updated_at')->get();
+
+		return View::make('users.show', compact('user', 'calendarEvents'));
 	}
 
 	/**
@@ -65,6 +91,17 @@ class UsersController extends \BaseController {
 	public function edit($id)
 	{
 		$user = User::find($id);
+
+		if(Auth::id() != $user->id) {
+			Session::flash('errorMessage', 'You are not authorized to edit this user.');
+			Log::warning('User ' . Auth::id() . ' tried to edit user ' . $user->id .  ' without authorization.');
+			return Redirect::action('UsersController@index');
+		}
+
+		if(!$user) {
+			Session::flash('errorMessage', 'The user you are looking for does not exist.');
+			return App::abort(404);	
+		}
 
 		return View::make('users.edit', compact('user'));
 	}
@@ -78,17 +115,41 @@ class UsersController extends \BaseController {
 	public function update($id)
 	{
 		$user = User::findOrFail($id);
+		$password = Input::get('password');
+		$validator = Validator::make(Input::all(), User::$editRules);
 
-		$validator = Validator::make($data = Input::all(), User::$rules);
+		if ($validator->fails()) {
+	        Session::flash('errorMessage', 'Hmmm...something went wrong. Please check the message(s) below to fix:');
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else if(!$user) {
+			Session::flash('errorMessage', 'The user you are looking for does not exist.');
+			App::abort(404);
+		} else if ((Auth::attempt(array('password' => $password)))) {
+			Session::flash('errorMessage', 'Your password was incorrect.');
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else if ((Input::has('newPass') || Input::has('newPassConfirm')) && (Input::get('newPass') != Input::get('newPassConfirm'))) {
+			Session::flash('errorMessage', 'Your passwords did not match');
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+ 
+		// updates the edited user
+		$user->first_name = Input::get('first_name');
+		$user->last_name  = Input::get('last_name');
+		$user->username   = Input::get('username');
+		$user->email      = Input::get('email');
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
+		if (Input::has('newPass')) {
+			$user->password = Input::get('newPass');
+			Session::flash('successMessage', 'Your password was updated.');
 		}
 
-		$user->update($data);
+		$user->save();
 
-		return Redirect::route('users.index');
+		Log::info('User ' . $user->id . ' updated successfully.');
+
+		Session::flash('successMessage', 'Your account was updated successfully!');
+
+		return Redirect::route('users.show', $user->id);
 	}
 
 	/**

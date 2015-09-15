@@ -20,6 +20,9 @@ class CalendarEventsController extends \BaseController {
 			$query->orWhereHas('location', function($q) use ($search) {
 				$q->where('city', 'like', "%$search%");
 			});
+			$query->orWhereHas('location', function($q) use ($search) {
+				$q->where('place', 'like', "%$search%");
+			});
 			$query->orWhereHas('user', function($q) use ($search) {
 				$q->where('username', 'like', "%$search%");
 			});
