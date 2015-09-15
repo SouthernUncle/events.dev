@@ -1,6 +1,8 @@
 <?php
 
-class CalendarEventsController extends \BaseController {
+use Carbon\Carbon as Carbon;
+
+class CalendarEventsController extends BaseController {
 
 	/**
 	 * Display a listing of calendarEvents
@@ -9,7 +11,7 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$query = CalendarEvent::with('location', 'user');
+		$query = CalendarEvent::with('location', 'user')->where('start', '>', Carbon::now());
 
 		$search = Input::get('search');
 
@@ -31,6 +33,15 @@ class CalendarEventsController extends \BaseController {
 		$calendarEvents = $query->orderBy('start')->get();
 
 		return View::make('calendarEvents.index', compact('calendarEvents'));
+	}
+
+	public function past()
+	{
+		$query = CalendarEvent::with('location', 'user')->where('start', '<', Carbon::now());
+
+		$pastEvents = $query->orderBy('start', 'desc')->get();
+
+		return View::make('calendarEvents.past', compact('pastEvents'));
 	}
 
 	/**
@@ -78,7 +89,7 @@ class CalendarEventsController extends \BaseController {
 		$ce->price = $price;
 		$ce->start = $start;
 		$ce->location_id = $location;
-		$ce->user_id = 1;
+		$ce->user_id = Auth::id();
 
 		$ce->save();
 
@@ -98,9 +109,15 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$ce = CalendarEvent::findOrFail($id);
-
+		$ce = CalendarEvent::find($id);
+		
 		if ($ce) {
+
+			$description = $ce->description;
+			$parse = new Parsedown();
+
+			$ce->description = $parse->text($description);
+
 			if (is_null($ce->img_url)) {
 				$ce->img_url = "/img/concerts3.jpg";
 			} else {
@@ -150,7 +167,7 @@ class CalendarEventsController extends \BaseController {
 		$ce->price = Input::get('price');
 		$ce->start = Input::get('start');
 		$ce->location_id = Input::get('location');
-		$ce->user_id = 1;
+		$ce->user_id = Auth::id();
 
 		$ce->save();
 

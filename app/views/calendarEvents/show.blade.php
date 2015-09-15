@@ -24,16 +24,16 @@
 
 @section('content')
 	<h1>{{{ $ce->title }}}</h1>
-	<h3>{{{ $ce->description }}}</h3>
-	<p>{{{ CalendarEvent::formatDate($ce->start)->format('l, F jS Y @ g A') }}}</p>
+	{{ $ce->description }}
+	<h4>{{{ CalendarEvent::formatDate($ce->start)->format('l, F jS Y @ g A') }}}</h4>
 	<p>
 		<a href="">
 			RSVP
 		</a>
 	</p>
-
-@stop
-
-@section('js')
-
+	<h4>
+		<a href="{{{ action('CalendarEventsController@index') }}}">
+			Upcoming Events
+		</a>
+	</h4>
 @stop

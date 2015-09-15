@@ -2,6 +2,10 @@
 
 @section('title', 'Concert Lister - Create Account')
 
+@section('style')
+	<link rel="stylesheet" type="text/css" href="/css/create_edit.css">
+@stop
+
 @section('heading', 'Create Account')
 
 @section('subheading', 'Concert Lister')
@@ -9,7 +13,7 @@
 @section('image_url', '/img/concerts2.jpg')
 
 @section('content')
-	{{ Form::open(array('action' => 'UsersController@store', 'method' => 'POST', 'class' => 'form-horizontal')) }}
+	{{ Form::open(array('action' => 'UsersController@store', 'method' => 'POST', 'class' => 'form-horizontal', 'id' => 'createUser')) }}
 
 		{{ Form::label('first_name', 'First') }}
 		{{ Form::text('first_name', null, 
