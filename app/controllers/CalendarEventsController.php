@@ -140,8 +140,12 @@ class CalendarEventsController extends BaseController {
 	public function edit($id)
 	{
 		$calendarEvent = CalendarEvent::find($id);
-		$locations = Location::all();
-
+		$locations = Location::getQuery()->select('id', 'place')->get();
+		$select = [];
+		foreach($locations as $location) {
+			$select[$location->id] = $location->place;
+		}
+		$locations = $select;
 		return View::make('calendarEvents.edit', compact('calendarEvent', 'locations'));
 	}
 
@@ -153,27 +157,31 @@ class CalendarEventsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		$ce = CalendarEvent::findOrFail($id);
+		$ce = CalendarEvent::find($id);
 
-		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
+		if ($ce) {
+			$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			if ($validator->fails())
+			{
+				return Redirect::back()->withErrors($validator)->withInput();
+			}
+
+			$ce->title = Input::get('title');
+			$ce->description = Input::get('description');
+			$ce->price = Input::get('price');
+			$ce->start = Input::get('start');
+			$ce->location_id = Input::get('location');
+			$ce->user_id = Auth::id();
+
+			$ce->save();
+
+			Session::flash('successMessage', 'You edited this event successfully');
+
+			return Redirect::action('CalendarEventsController@show', $ce->id);
 		}
 
-		$ce->title = Input::get('title');
-		$ce->description = Input::get('description');
-		$ce->price = Input::get('price');
-		$ce->start = Input::get('start');
-		$ce->location_id = Input::get('location');
-		$ce->user_id = Auth::id();
-
-		$ce->save();
-
-		Session::flash('successMessage', 'You edited this event successfully');
-
-		return Redirect::action('CalendarEventsController@show', $ce->id);
+		App::abort(404);
 	}
 
 	/**
