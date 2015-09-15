@@ -101,6 +101,12 @@ class CalendarEventsController extends \BaseController {
 		$ce = CalendarEvent::findOrFail($id);
 
 		if ($ce) {
+
+			$description = $ce->description;
+			$parse = new Parsedown();
+
+			$ce->description = $parse->text($description);
+
 			if (is_null($ce->img_url)) {
 				$ce->img_url = "/img/concerts3.jpg";
 			} else {
