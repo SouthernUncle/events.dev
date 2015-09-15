@@ -98,8 +98,8 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$ce = CalendarEvent::findOrFail($id);
-
+		$ce = CalendarEvent::find($id);
+		
 		if ($ce) {
 
 			$description = $ce->description;
