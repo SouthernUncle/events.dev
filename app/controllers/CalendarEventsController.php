@@ -123,8 +123,9 @@ class CalendarEventsController extends \BaseController {
 	public function edit($id)
 	{
 		$calendarEvent = CalendarEvent::find($id);
+		$locations = Location::all();
 
-		return View::make('calendarEvents.edit', compact('calendarEvent'));
+		return View::make('calendarEvents.edit', compact('calendarEvent', 'locations'));
 	}
 
 	/**
@@ -135,7 +136,7 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$calendarEvent = CalendarEvent::findOrFail($id);
+		$ce = CalendarEvent::findOrFail($id);
 
 		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
 
@@ -144,9 +145,18 @@ class CalendarEventsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		$calendarEvent->update($data);
+		$ce->title = Input::get('title');
+		$ce->description = Input::get('description');
+		$ce->price = Input::get('price');
+		$ce->start = Input::get('start');
+		$ce->location_id = Input::get('location');
+		$ce->user_id = 1;
 
-		return Redirect::route('calendarEvents.index');
+		$ce->save();
+
+		Session::flash('successMessage', 'You edited this event successfully');
+
+		return Redirect::action('CalendarEventsController@show', $ce->id);
 	}
 
 	/**

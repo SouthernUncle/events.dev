@@ -5,7 +5,9 @@
 @stop
 
 @section('style')
-
+<style>
+/* You need to have the style tags in here. */
+</style>
 @stop
 
 @section('heading')
@@ -25,5 +27,7 @@
 @stop
 
 @section('js')
-
+<script>
+// You need to have the script tags in here.
+</script>
 @stop
