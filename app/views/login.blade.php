@@ -6,7 +6,7 @@
 
 @section('subheading', 'Concert Lister')
 
-@section('image_url', '/img/concert2.jpg')
+@section('image_url', '/img/concerts2.jpg')
 
 @section('content')
 	<div class="container">
@@ -16,7 +16,7 @@
     	            <div id="loginForm" class="form-group col-xs-12">
     	                <div class="row">
     	                	{{ Form::label('username', 'Username') }}
-							{{ Form::text('username', null, ['class' => 'form-control']) }}
+							{{ Form::text('username', null, [ 'autofocus', 'class' => 'form-control']) }}
 
 							{{ Form::label('password', 'Password') }}
 							{{ Form::password('password', null, ['class' => 'form-control']) }}

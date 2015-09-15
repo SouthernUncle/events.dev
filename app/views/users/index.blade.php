@@ -47,8 +47,9 @@
 		</tbody>
 	</table>
 	
-@stop
-
-@section('js')
-
+	<h4>
+		<a href="{{{ action('CalendarEventsController@index') }}}">
+			Upcoming Events
+		</a>
+	</h4>
 @stop

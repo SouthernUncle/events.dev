@@ -1,6 +1,8 @@
 <?php
 
-class CalendarEventsController extends \BaseController {
+use Carbon\Carbon as Carbon;
+
+class CalendarEventsController extends BaseController {
 
 	/**
 	 * Display a listing of calendarEvents
@@ -9,7 +11,7 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$query = CalendarEvent::with('location', 'user');
+		$query = CalendarEvent::with('location', 'user')->where('start', '>', Carbon::now());
 
 		$search = Input::get('search');
 
@@ -31,6 +33,15 @@ class CalendarEventsController extends \BaseController {
 		$calendarEvents = $query->orderBy('start')->get();
 
 		return View::make('calendarEvents.index', compact('calendarEvents'));
+	}
+
+	public function past()
+	{
+		$query = CalendarEvent::with('location', 'user')->where('start', '<', Carbon::now());
+
+		$pastEvents = $query->orderBy('start', 'desc')->get();
+
+		return View::make('calendarEvents.past', compact('pastEvents'));
 	}
 
 	/**
