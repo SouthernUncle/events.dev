@@ -13,8 +13,8 @@
 {{ HTML::style('/css/bootstrap-theme.min.css'); }}
 {{ HTML::style('/css/jquery-ui.css'); }}
 
-<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
 
 {{ HTML::style('/css/clean_blog.css'); }}
 {{ HTML::style('/css/main.css'); }}
