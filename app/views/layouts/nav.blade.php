@@ -23,7 +23,7 @@
                 @if(Auth::check())
                     <li>
                         <a href="{{{ action('UsersController@show', Auth::id()) }}}">
-                            Profile
+                            {{{ Auth::user()->username }}}
                         </a>
                     </li>
                     <li>
@@ -40,6 +40,12 @@
                         </a>
                     </li>
                 @endif
+
+                <li>
+                    <a href="{{{ action('CalendarEventsController@index')}}}">
+                        Events
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{{ action('UsersController@index')}}}">

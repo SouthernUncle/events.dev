@@ -7,19 +7,18 @@
 </title>
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="/css/bootstrap.min.css">
+{{ HTML::style('/css/bootstrap.min.css'); }}
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-
-<link rel="stylesheet" href="/css/jquery-ui.css">
+{{ HTML::style('/css/bootstrap-theme.min.css'); }}
+{{ HTML::style('/css/jquery-ui.css'); }}
 
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 
 {{ HTML::style('/css/clean_blog.css'); }}
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{{ HTML::style('/css/main.css'); }}
+{{ HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'); }}
 
 @yield('style')
 

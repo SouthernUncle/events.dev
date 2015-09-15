@@ -1,31 +1,18 @@
 @extends('layouts.master')
 
-@section('title')
-Edit Event
-@stop
+@section('title', 'Edit Event')
 
 @section('style')
-<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css">
-<style type="text/css">
-    .wmd-preview {
-        background-color: #EEE;
-        padding: 10px;
-        margin-top: 10px;
-    }
-</style>
+    {{ HTML::style('/css/jquery.datetimepicker.css'); }}
+    {{ HTML::style('/css/events_edit.css'); }}
 @stop
 
-@section('heading')
-Editor
-@stop
+@section('heading', 'Editor')
 
-@section('subheading')
-...
-@stop
+@section('subheading', '...')
 
-@section('image_url')
-'/img/pen.jpg'
-@stop
+@section('image_url', '/img/pen.jpg')
+
 @section('content')
 {{ Form::model($calendarEvent, array('action' => array('CalendarEventsController@update', $calendarEvent->id), 'method' => 'PUT')) }}
 

@@ -2,10 +2,6 @@
 
 @section('title', 'Concert Lister - Create Account')
 
-@section('style')
-	<link rel="stylesheet" type="text/css" href="/css/create_edit.css">
-@stop
-
 @section('heading', 'Create Account')
 
 @section('subheading', 'Concert Lister')

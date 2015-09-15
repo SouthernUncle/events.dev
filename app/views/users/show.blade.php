@@ -1,12 +1,6 @@
 @extends('layouts.master')
 
-@section('title')
-	Concert Lister
-@stop
-
-@section('style')
-
-@stop
+@section('title', 'Concert Lister')
 
 @section('heading')
 	{{{ $user->username }}}
@@ -16,9 +10,7 @@
 	{{{ $user->first_name }}} {{{ $user->last_name }}}
 @stop
 
-@section('image_url')
-'/img/concerts2.jpg'
-@stop
+@section('image_url', '/img/concerts2.jpg')
 
 @section('content')
 	<h3>Member Since:</h3>
