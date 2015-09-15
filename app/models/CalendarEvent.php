@@ -5,7 +5,7 @@ use Carbon\Carbon as Carbon;
 
 class CalendarEvent extends Eloquent {
 
-	protected $fillable = ['_token'];
+	protected $fillable = [];
 
 	protected $table = 'calendar_events';
 

@@ -28,7 +28,6 @@
 
 @include('layouts.nav')
 
-{{-- {{ Post::randomImage() }} --}}
 <header class="intro-header missing" style="background-image: url('/img/404.jpg')">
     <div class="container">
         <div class="row">
