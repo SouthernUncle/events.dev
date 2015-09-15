@@ -1,18 +1,20 @@
 <div class="container main">
-    @if($errors->has())
-        <div class="row alert alert-danger">
-            @foreach($errors->all() as $error)
-                <li>{{{ $error }}}</li>
-            @endforeach
-        </div>
-    @endif
+    <section>
+        <div class="container">
+            @if (Session::has('successMessage'))
+            <div class="alert alert-success messages">{{{ Session::get('successMessage') }}}</div>
+            @endif
+            @if (Session::has('errorMessage'))
+                <div class="alert alert-danger messages">{{{ Session::get('errorMessage') }}}</div>
+            @endif
 
-    @if (Session::has('successMessage'))
-        <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
-    @endif
-    @if (Session::has('errorMessage'))
-        <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
-    @endif
+            @if($errors->has())
+                    @foreach($errors->all() as $error)
+                        <p class="errors alert alert-danger" role="alert">{{{ $error }}}</p>
+                    @endforeach
+            @endif
+        </div>
+    </section>
 
     @yield('content')
 </div>

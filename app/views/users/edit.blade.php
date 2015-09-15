@@ -1,24 +1,12 @@
 @extends('layouts.master')
 
-@section('title')
+@section('title', 'Edit Account')
 
-@stop
+@section('heading', 'Edit Account')
 
-@section('style')
+@section('subheading', '{{{ $user->username }}}')
 
-@stop
-
-@section('heading')
-	Edit Account
-@stop
-
-@section('subheading')
-	{{{ $user->username }}}
-@stop
-
-@section('image_url')
-	'/img/pen.jpg'
-@stop
+@section('image_url', '/img/pen.jpg')
 
 @section('content')
 	{{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'method' => 'PUT', 'class' => 'form-horizontal')) }}

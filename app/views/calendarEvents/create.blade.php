@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('title')
-Create Event
-@stop
+@section('title', 'Create Event')
 
 @section('style')
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css">
