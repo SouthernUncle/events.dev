@@ -9,7 +9,7 @@
 @section('image_url', '/img/concerts2.jpg')
 
 @section('content')
-	{{ Form::open(array('action' => 'UsersController@store', 'method' => 'PUT', 'class' => 'form-horizontal')) }}
+	{{ Form::open(array('action' => 'UsersController@store', 'method' => 'POST', 'class' => 'form-horizontal')) }}
 
 		{{ Form::label('first_name', 'First') }}
 		{{ Form::text('first_name', null, 

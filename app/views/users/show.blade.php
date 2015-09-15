@@ -36,6 +36,9 @@
 	    <button class="btn btn-default" id="delete">Delete >></button>
     @endif
 
+    {{ Form::open(array('action' => array('UsersController@destroy', $user->id), 'method' => 'DELETE', 'id' => 'formDelete')) }}
+    {{ Form::close() }}
+
 	<h3>Events Created:</h3>
 	@foreach ($calendarEvents as $ce)
 		<h4>
@@ -53,5 +56,16 @@
 @stop
 
 @section('js')
-
+    <script>
+        "use strict";
+        $(document).ready(function() {
+            $('#delete').click(function() {
+                var onConfirm = confirm('Are you sure you want to delete your account? This action will delete all of your posts and cannot be undone.');
+                
+                if(onConfirm) {
+                    $('#formDelete').submit();
+                }
+            })
+        });
+    </script>
 @stop
