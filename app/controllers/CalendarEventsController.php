@@ -78,7 +78,7 @@ class CalendarEventsController extends \BaseController {
 		$ce->price = $price;
 		$ce->start = $start;
 		$ce->location_id = $location;
-		$ce->user_id = 1;
+		$ce->user_id = Auth::id();
 
 		$ce->save();
 
@@ -150,7 +150,7 @@ class CalendarEventsController extends \BaseController {
 		$ce->price = Input::get('price');
 		$ce->start = Input::get('start');
 		$ce->location_id = Input::get('location');
-		$ce->user_id = 1;
+		$ce->user_id = Auth::id();
 
 		$ce->save();
 
