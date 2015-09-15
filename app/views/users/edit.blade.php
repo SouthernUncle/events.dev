@@ -17,7 +17,7 @@
 @stop
 
 @section('image_url')
-'/img/pen.jpg'
+	'/img/pen.jpg'
 @stop
 
 @section('content')

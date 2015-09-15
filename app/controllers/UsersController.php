@@ -44,18 +44,17 @@ class UsersController extends BaseController {
 			Session::flash('errorMessage', 'Hmmm...something went wrong. Please check the message(s) below to fix:');
 			Log::info('User create failed');
 	        return Redirect::back()->withInput()->withErrors($validator);
-
 	    }
 	        
         // validation succeeded, create and save the user
-		User::create([
-			'first_name' 			  => Input::get('first_name'),
-			'last_name'  			  => Input::get('last_name'),
-			'email'      			  => Input::get('email'),
-			'username'   			  => Input::get('username'),
-			'password'   			  => Input::get('password'),
-			'password_confirmation'   => Input::get('password_confirmation'),
-		]);
+		$user = new User();
+		$user->first_name = Input::get('first_name');
+		$user->last_name  = Input::get('last_name');
+		$user->email      = Input::get('email');
+		$user->username   = Input::get('username');
+		$user->password   = Input::get('password');
+		// $user->password_confirmation = Input::get('password_confirmation');
+		$user->save();
 
 		Log::info('User id: ' . $user->id . ' created.', array('newUser' => Input::get('username')));
 
@@ -160,9 +159,27 @@ class UsersController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		User::destroy($id);
+		// $id = Auth::id();
 
-		return Redirect::route('users.index');
+		// delete user's events
+		// CalendarEvent::where('user_id', $id)->delete();
+
+		// delete user account
+		$user = User::find($id)->delete();
+
+		Auth::logout();
+
+		if(!$user) {
+			Session::flash('errorMessage', 'The user you are looking for does not exist.');
+			App::abort(404);
+		}
+
+		Log::info('User was deleted.');
+
+		Session::flash('successMessage', 'Your account and posts were successfully deleted.');
+
+
+		return Redirect::action('CalendarEventsController@index');
 	}
 
 }
