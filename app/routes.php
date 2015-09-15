@@ -38,4 +38,4 @@ Route::resource('/calendarEvents', 'CalendarEventsController');
 Route::resource('/users', 'UsersController');
 
 // LOCATION
-Route::resource('/locations', 'locationsController');
+Route::resource('/locations', 'LocationsController');

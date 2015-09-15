@@ -1,6 +1,6 @@
 <?php
 
-class LocationsController extends \BaseController {
+class LocationsController extends BaseController {
 
 	/**
 	 * Display a listing of locations
@@ -9,7 +9,7 @@ class LocationsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$locations = Location::all();
+		$locations = Location::orderBy('state')->orderBy('city')->orderBy('place')->get();
 
 		return View::make('locations.index', compact('locations'));
 	}
@@ -51,9 +51,13 @@ class LocationsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$location = Location::findOrFail($id);
+		$location 		  = Location::findOrFail($id);
+		$query 	  		  = CalendarEvent::with('location');
+		$calendarEvents	  = $query->where('location_id', $location->id)->orderBy('start')->get();
 
-		return View::make('locations.show', compact('location'));
+		// dd($calendarEvents);
+
+		return View::make('locations.show', compact('location', 'calendarEvents'));
 	}
 
 	/**

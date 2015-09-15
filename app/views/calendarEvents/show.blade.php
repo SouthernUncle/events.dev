@@ -20,6 +20,11 @@
 
 @section('content')
 	<h1>{{{ $ce->title }}}</h1>
+	<h3> @
+		<a href="{{{ action('LocationsController@show', $ce->location->id) }}}">
+			{{{ $ce->location->place }}}
+		</a>
+	</h3>
 	<h5>Hosted by: 
 		<a href="{{{ action('UsersController@show', $ce->user->id) }}}">
 			{{{ $ce->user->username }}}
