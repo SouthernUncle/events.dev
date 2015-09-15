@@ -22,20 +22,36 @@
 
                 @if(Auth::check())
                     <li>
-                        <a href="{{{ action('UsersController@show', Auth::id()) }}}">Profile</a>
+                        <a href="{{{ action('UsersController@show', Auth::id()) }}}">
+                            Profile
+                        </a>
                     </li>
                     <li>
-                        <a href="{{{ action('CalendarEventsController@create')}}}">Create a New Concert</a>
+                        <a href="{{{ action('CalendarEventsController@create')}}}">
+                            Create a New Concert
+                        </a>
+                    </li>
+                @endif
+
+                @if(!Auth::check())
+                    <li>
+                        <a href="{{{ action('UsersController@create') }}}">
+                            Register
+                        </a>
                     </li>
                 @endif
 
                 <li>
-                    <a href="{{{ action('UsersController@index')}}}">Users</a>
+                    <a href="{{{ action('UsersController@index')}}}">
+                        Users
+                    </a>
                 </li>
 
                 @if(Auth::check())
                     <li>
-                        <a href="/logout">Logout</a>
+                        <a href="{{{ action('HomeController@doLogout') }}}">
+                            Logout
+                        </a>
                     </li>
                 @endif
             </ul>

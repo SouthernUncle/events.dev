@@ -9,7 +9,7 @@
 @stop
 
 @section('heading')
-	LIVE
+	PAST
 @stop
 
 @section('subheading')
@@ -17,7 +17,7 @@
 @stop
 
 @section('image_url')
-	'/img/concerts1.jpg'
+	'/img/concerts2.jpg'
 @stop
 
 @section('content')
@@ -35,7 +35,7 @@
 		</thead>
 		<tbody>
 			<?php $i = 0; ?>
-			@foreach ($calendarEvents as $ce)
+			@foreach ($pastEvents as $ce)
 			<tr>
 				<td>{{{ $i+=1 }}}</td>
 				<td>
@@ -51,10 +51,13 @@
 			@endforeach
 		</tbody>
 	</table>
-
 	<h4>
-		<a href="{{{ action('CalendarEventsController@past') }}}">
-			Past Events
+		<a href="{{{ action('CalendarEventsController@index') }}}">
+			Upcoming Events
 		</a>
 	</h4>
+@stop
+
+@section('js')
+
 @stop

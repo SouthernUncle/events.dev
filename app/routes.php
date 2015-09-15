@@ -21,6 +21,9 @@ Route::get('/login', 'HomeController@showLogin');
 // LOGOUT
 Route::get('/logout', 'HomeController@doLogout');
 
+// PAST EVENTS
+Route::get('calendarEvents/past', 'CalendarEventsController@past');
+
 
 // POST
 // LOGIN

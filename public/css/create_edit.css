@@ -1,0 +1,16 @@
+.errors {
+    margin-left: auto;
+    margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+    max-width: 50%;
+    text-align: center;
+}
+
+.messages {
+    margin-top: 90px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 10%;
+    margin-left: 10%;
+}

@@ -53,6 +53,11 @@
 
 	@endforeach
 
+	<h4>
+		<a href="{{{ action('UsersController@index') }}}">
+			All Users
+		</a>
+	</h4>
 @stop
 
 @section('js')
