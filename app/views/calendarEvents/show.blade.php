@@ -20,7 +20,12 @@
 
 @section('content')
 	<h1>{{{ $ce->title }}}</h1>
-	<h5>Hosted by: {{{ $ce->user->username }}}</h5>
+	<h5>Hosted by: 
+		<a href="{{{ action('UsersController@show', $ce->user->id) }}}">
+			{{{ $ce->user->username }}}
+		</a>
+	</h5>
+
 	{{ $ce->description }}
 	<h4>{{{ CalendarEvent::formatDate($ce->start)->format('l, F jS Y @ g A') }}}</h4>
 
