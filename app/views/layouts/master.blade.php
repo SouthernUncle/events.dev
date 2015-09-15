@@ -63,10 +63,10 @@
 
                     @if(Auth::check())
                         <li>
-                            <a href="/posts/manage">Manage Posts</a>
+                            <a href="/calendarEvents/manage">Manage Listings</a>
                         </li>
                         <li>
-                            <a href="/posts/create">Create a New Post</a>
+                            <a href="/calendarEvents/create">Create a New Concert</a>
                         </li>
                         <li>
                             <a href="/logout">Logout</a>
