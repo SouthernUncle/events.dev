@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Edit Blog Post
+Edit Event
 @stop
 
 @section('style')
@@ -26,7 +26,7 @@ Editor
 '/img/pen.jpg'
 @stop
 @section('content')
-    {{ Form::model($post, array('action' => array('CalenderEventsController@update', $post->id), 'method' => 'PUT')) }}
+    {{ Form::model($ce, array('action' => array('CalenderEventsController@update', $ce->id), 'method' => 'PUT')) }}
 
         {{ Form::label('title', 'Title') }}
         {{ Form::text('title', null, ['class' => 'form-control']) }}
@@ -35,7 +35,7 @@ Editor
                 
         <div class="wmd-panel">
             <div id="wmd-button-bar"></div>
-            <textarea class="wmd-input form-control" name="body" cols="50" rows="10" id="wmd-input">{{ $post->body }}</textarea>
+            <textarea class="wmd-input form-control" name="body" cols="50" rows="10" id="wmd-input">{{ $ce->body }}</textarea>
         </div>
         <label>Preview:</label>
         <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
@@ -48,30 +48,6 @@ Editor
         <button class="btn btn-default">Save</button>
 
     {{ Form::close() }}
-@stop
-
-@section('style')
-
-@stop
-
-@section('heading')
-	Edit Event
-@stop
-
-@section('subheading')
-
-@stop
-
-@section('image_url')
-'/img/concerts2	.jpg'
-@stop
-
-@section('content')
-
-@stop
-
-@section('js')
-
 @stop
 
 @section('js')

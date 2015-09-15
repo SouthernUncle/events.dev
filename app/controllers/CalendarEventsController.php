@@ -40,7 +40,8 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('calendarEvents.create');
+		$locations = Location::all();
+		return View::make('calendarEvents.create', compact('locations'));
 	}
 
 	/**
@@ -54,10 +55,37 @@ class CalendarEventsController extends \BaseController {
 
 		if ($validator->fails())
 		{
+	    	Session::flash('errorMessage', 'Something went wrong.');
+
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		CalendarEvent::create($data);
+		$ce = new CalendarEvent();
+
+		$title = Input::get('title');
+		$description = Input::get('description');
+		$price = Input::get('price');
+		$start = Input::get('start');
+		$location = Input::get('location');
+
+		if (Request::hasFile('file')) {
+		    $img = Imageupload::upload(Request::file('file'));
+ 			$ce->img_url = $img['filename'];
+		}
+		
+		$ce->title = $title;
+		$ce->description = $description;
+		$ce->price = $price;
+		$ce->start = $start;
+		$ce->location_id = $location;
+		$ce->user_id = 1;
+
+		$ce->save();
+
+
+		Log::info('Success: ' ,['title' => $ce->title, 'description' => $ce->body]);
+
+		Session::flash('successMessage', 'You created a post successfully');
 
 		return Redirect::route('calendarEvents.index');
 	}
@@ -70,9 +98,20 @@ class CalendarEventsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$calendarEvent = CalendarEvent::findOrFail($id);
+		$ce = CalendarEvent::findOrFail($id);
 
-		return View::make('calendarEvents.show', compact('calendarEvent'));
+		if ($ce) {
+			if (is_null($ce->img_url)) {
+				$ce->img_url = "/img/concerts3.jpg";
+			} else {
+				$basename = $ce->img_url;
+				$ce->img_url = "/uploads/images/$basename";
+			}
+
+			return View::make('calendarEvents.show', compact('ce'));
+		}
+
+		App::abort(404);
 	}
 
 	/**

@@ -3,9 +3,9 @@
 use \Esensi\Model\Model;
 use Carbon\Carbon as Carbon;
 
-class CalendarEvent extends Model {
+class CalendarEvent extends Eloquent {
 
-	protected $fillable = [];
+	protected $fillable = ['_token'];
 
 	protected $table = 'calendar_events';
 
@@ -35,7 +35,7 @@ class CalendarEvent extends Model {
 	 * Rules
 	 *
 	 */
-	protected $rules = array(
+	public static $rules = array(
 		'title' => 'required',
 		'description' => 'required',
 		'start' => 'required',
