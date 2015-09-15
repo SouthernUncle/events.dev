@@ -1,24 +1,12 @@
 @extends('layouts.master')
 
-@section('title')
-	Concert Lister - Login
-@stop
+@section('title', 'Concert Lister - Login')
 
-@section('style')
+@section('heading', 'Log In')
 
-@stop
+@section('subheading', 'Concert Lister')
 
-@section('heading')
-	Log IN
-@stop
-
-@section('subheading')
-	Concert Lister
-@stop
-
-@section('image_url')
-''
-@stop
+@section('image_url', '/img/concert2.jpg')
 
 @section('content')
 	<div class="container">
@@ -40,8 +28,4 @@
             </div>
         </div>
     </div>
-@stop
-
-@section('js')
-
 @stop

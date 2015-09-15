@@ -65,7 +65,7 @@
 		}}
 
 		{{ Form::label('password', 'New Password') }}
-		{{ Form::password('password', null, 
+		{{ Form::password('newPass', null, 
 			[
 				'class' 	  => 'form-control', 
 				'placeholder' => 'New Password',
@@ -73,7 +73,7 @@
 		}}
 
 		{{ Form::label('password', 'Confirm New Password') }}
-		{{ Form::password('password_confirmation', null, 
+		{{ Form::password('newPassConfirm', null, 
 			[
 				'class' 	  => 'form-control', 
 				'placeholder' => 'Confirm New Password',
