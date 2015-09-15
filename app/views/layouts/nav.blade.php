@@ -15,27 +15,25 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="searchBar">
-                {{ Form::open(array('action' => 'CalendarEventsController@index', 'method' => 'get')) }}
-
-                    {{ Form::text('search', null, ['class' => 'form-control search', 'placeholder' => 'Search...']) }}
-
-                {{ Form::close() }}
-                </li>
-
-                <li>
-                    <a href="/about">About</a>
-                </li>
-                <li>
-                    <a href="/portfolio">Portfolio</a>
+	                {{ Form::open(array('action' => 'CalendarEventsController@index', 'method' => 'get')) }}
+	                    {{ Form::text('search', null, ['class' => 'form-control search', 'placeholder' => 'Search...']) }}
+	                {{ Form::close() }}
                 </li>
 
                 @if(Auth::check())
                     <li>
-                        <a href="/calendarEvents/manage">Manage Listings</a>
+                        <a href="{{{ action('UsersController@show', Auth::id()) }}}">Profile</a>
                     </li>
                     <li>
-                        <a href="/calendarEvents/create">Create a New Concert</a>
+                        <a href="{{{ action('CalendarEventsController@create')}}}">Create a New Concert</a>
                     </li>
+                @endif
+
+                <li>
+                    <a href="{{{ action('UsersController@index')}}}">Users</a>
+                </li>
+
+                @if(Auth::check())
                     <li>
                         <a href="/logout">Logout</a>
                     </li>
