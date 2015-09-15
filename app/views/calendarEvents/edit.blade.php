@@ -38,11 +38,12 @@
 
 <label for="location">Location</label>
 <div>
-    <select class="form-control" name="location">
+    {{-- <select class="form-control" name="location">
         @foreach ($locations as $location)
             <option value="{{{ $location->id }}}">{{{ $location->place }}}</option>
         @endforeach
-    </select>
+    </select> --}}
+    {{ Form::select('location', $locations, $calendarEvent->location->id, array('class' => 'form-control'))}}
 </div>
 
 {{ Form::label('file','File',array('id'=>'','class'=>'')) }}
