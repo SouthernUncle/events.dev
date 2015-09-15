@@ -28,7 +28,7 @@
                     </li>
                     <li>
                         <a href="{{{ action('CalendarEventsController@create')}}}">
-                            Create a New Concert
+                            New Concert
                         </a>
                     </li>
                 @endif
@@ -44,6 +44,12 @@
                 <li>
                     <a href="{{{ action('CalendarEventsController@index')}}}">
                         Events
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{{ action('LocationsController@index')}}}">
+                        Venues
                     </a>
                 </li>
 

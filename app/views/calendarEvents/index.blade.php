@@ -35,7 +35,11 @@
 						{{{ $ce->title }}}
 					</a>
 				</td>
-				<td>{{{ $ce->location->place }}}</td>
+				<td>
+					<a href="{{{ action('LocationsController@show', $ce->location->id) }}}">
+						{{{ $ce->location->place }}}
+					</a>
+				</td>
 				<td>{{{ CalendarEvent::formatDate($ce->start)->format('D. M. jS, Y') }}}</td>
 				<td>{{{ CalendarEvent::formatDate($ce->start)->format('g A') }}}</td>
 				<td>{{{ $ce->location->city }}}, {{{ $ce->location->state }}}</td>
