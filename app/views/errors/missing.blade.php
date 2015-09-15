@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <title>Nope...</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    {{ HTML::style('/css/bootstrap.min.css'); }}
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-
-    <link rel="stylesheet" href="/css/jquery-ui.css">
-
+    {{ HTML::style('/css/bootstrap-theme.min.css'); }}
+    {{ HTML::style('/css/jquery-ui.css'); }}
     
     @yield('style')
 

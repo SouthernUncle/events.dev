@@ -4,7 +4,9 @@
 
 @section('heading', 'Edit Account')
 
-@section('subheading', '{{{ $user->username }}}')
+@section('subheading')
+	{{{ $user->username }}}
+@stop
 
 @section('image_url', '/img/pen.jpg')
 
@@ -71,8 +73,4 @@
 		<button class="btn btn-default" id="post">Submit</button>
 
 	{{ Form::close() }}
-@stop
-
-@section('js')
-
 @stop

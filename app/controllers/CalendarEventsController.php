@@ -186,6 +186,10 @@ class CalendarEventsController extends BaseController {
 	{
 		CalendarEvent::destroy($id);
 
+		Log::info('Event was deleted.');
+
+		Session::flash('successMessage', 'Your event was successfully deleted.');
+
 		return Redirect::route('calendarEvents.index');
 	}
 

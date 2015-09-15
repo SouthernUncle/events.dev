@@ -1,24 +1,16 @@
 @extends('layouts.master')
 
-@section('title')
-	Events Index
-@stop
+@section('title', 'Events Index')
 
 @section('style')
 	<link rel="stylesheet" type="text/css" href="/css/calendar_events_index.css">
 @stop
 
-@section('heading')
-	LIVE
-@stop
+@section('heading', 'LIVE')
 
-@section('subheading')
-	Awesome Music in Awesome Venues
-@stop
+@section('subheading', 'Awesome Music in Awesome Venues')
 
-@section('image_url')
-	'/img/concerts1.jpg'
-@stop
+@section('image_url', '/img/concerts1.jpg')
 
 @section('content')
 	<table class="table table-responsive">

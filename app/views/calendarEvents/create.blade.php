@@ -3,14 +3,8 @@
 @section('title', 'Create Event')
 
 @section('style')
-<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css">
-<style type="text/css">
-.wmd-preview {
-    background-color: #EEE;
-    padding: 10px;
-    margin-top: 10px;
-}
-</style>
+    {{ HTML::style('/css/jquery.datetimepicker.css'); }}
+    {{ HTML::style('/css/events_edit.css'); }}
 @stop
 
 @section('heading')
