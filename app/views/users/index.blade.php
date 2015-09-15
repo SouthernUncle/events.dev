@@ -1,24 +1,12 @@
 @extends('layouts.master')
 
-@section('title')
-	Concert Lister
-@stop
+@section('title', 'Concert Lister')
 
-@section('style')
+@section('heading', 'List of Users')
 
-@stop
+@section('subheading', '...')
 
-@section('heading')
-	List of Users
-@stop
-
-@section('subheading')
-	...
-@stop
-
-@section('image_url')
-'/img/concerts2.jpg'
-@stop
+@section('image_url', '/img/concerts2.jpg')
 
 @section('content')
 	<table class="table table-responsive">

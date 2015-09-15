@@ -1,24 +1,14 @@
 @extends('layouts.master')
 
-@section('title')
+@section('title', 'Edit Account')
 
-@stop
-
-@section('style')
-
-@stop
-
-@section('heading')
-	Edit Account
-@stop
+@section('heading', 'Edit Account')
 
 @section('subheading')
 	{{{ $user->username }}}
 @stop
 
-@section('image_url')
-	'/img/pen.jpg'
-@stop
+@section('image_url', '/img/pen.jpg')
 
 @section('content')
 	{{ Form::model($user, array('action' => array('UsersController@update', $user->id), 'method' => 'PUT', 'class' => 'form-horizontal')) }}
@@ -83,8 +73,4 @@
 		<button class="btn btn-default" id="post">Submit</button>
 
 	{{ Form::close() }}
-@stop
-
-@section('js')
-
 @stop

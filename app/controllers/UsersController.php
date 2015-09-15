@@ -76,7 +76,7 @@ class UsersController extends BaseController {
 		$query = CalendarEvent::with('user');
 		$query->where('user_id', $user->id);
 
-		$calendarEvents = $query->orderBy('updated_at')->get();
+		$calendarEvents = $query->orderBy('start')->get();
 
 		return View::make('users.show', compact('user', 'calendarEvents'));
 	}
@@ -159,10 +159,8 @@ class UsersController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		// $id = Auth::id();
-
 		// delete user's events
-		// CalendarEvent::where('user_id', $id)->delete();
+		CalendarEvent::where('user_id', $id)->delete();
 
 		// delete user account
 		$user = User::find($id)->delete();
