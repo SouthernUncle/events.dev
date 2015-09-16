@@ -18,7 +18,11 @@
 	<h3>{{{ $location->city }}}, {{{ $location->state }}}</h3>
 	<h4>{{{ $location->zip }}}</h4>
 
-	<div id="map">Map will go here</div>
+	<div id="map">
+		{{-- <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q={{ $qstring }}&key=AIzaSyCYjMX8DWrfrj1tQT7e4Ev92nvYOaf13os" allowfullscreen></iframe> --}}
+		<iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/search?q={{ $qstring }}&key=AIzaSyBJc2eSTR9h3VhnnIMaFIqpn3jC3UmzvZ8" allowfullscreen></iframe>
+	</div>
 
 	<h2>Upcoming Shows</h2>
 	<table class="table table-responsive">
