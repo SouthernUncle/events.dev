@@ -67,7 +67,13 @@ class LocationsController extends BaseController {
 
 		$qstring = $location->place . ' ' . $location->city . ' ' . $location->state;
 		$qstring = implode('%20', explode(' ', $qstring));
-		// dd($qstring);
+		
+		if (is_null($location->img_url)) {
+			$location->img_url = "/img/concerts3.jpg";
+		} else {
+			$basename = $location->img_url;
+			$location->img_url = "/img/venues/$basename";
+		}
 
 		return View::make('locations.show', compact('location', 'calendarEvents', 'qstring'));
 	}

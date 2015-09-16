@@ -10,7 +10,9 @@
 	{{{ $location->city }}}, {{{ $location->state }}}
 @stop
 
-@section('image_url', '/img/concerts4.jpg')
+@section('image_url')
+'{{{ $location->img_url }}}'
+@stop
 
 @section('content')
 	<h1>{{{ $location->place }}}</h1>

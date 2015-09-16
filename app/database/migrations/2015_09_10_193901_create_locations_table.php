@@ -20,6 +20,7 @@ class CreateLocationsTable extends Migration {
 			$table->string('city');
 			$table->string('state', 2);
 			$table->integer('zip');
+			$table->string('img_url', 100)->nullable();
 			$table->timestamps();
 		});
 	}
