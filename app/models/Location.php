@@ -1,8 +1,7 @@
 <?php
 
-use \Esensi\Model\Model;
 
-class Location extends Model {
+class Location extends Eloquent {
 
 	// Don't forget to fill this array
 	protected $fillable = [];
@@ -18,11 +17,16 @@ class Location extends Model {
 	    return $this->hasMany('CalendarEvent');
 	}
 
+	public function users()
+	{
+	    return $this->belongsTo('User');
+	}
+
 	/**
 	 * Rules
 	 *
 	 */
-	protected $rules = array(
+	public static $rules = array(
 		'place' => 'required',
 		'address' => 'required',
 		'city' => 'required',

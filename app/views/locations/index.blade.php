@@ -33,6 +33,14 @@
 			@endforeach
 		</tbody>
 	</table>
+
+	@if(Auth::id() == 1)
+		<a href="{{{ action('LocationsController@create') }}}">
+			<button class="btn btn-default">
+				Create Venue
+			</button>
+		</a>	
+	@endif
 	
 	<h4>
 		<a href="{{{ action('CalendarEventsController@index') }}}">
