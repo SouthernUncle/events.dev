@@ -35,10 +35,20 @@ class LocationsController extends BaseController {
 
 		if ($validator->fails())
 		{
+			Session::flash('errorMessage', 'Hmmm...something went wrong. Please check the message(s) below to fix:');
+			Log::info('Venue create failed');
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Location::create($data);
+		$location = new Location();
+		$location->place 	= Input::get('place');
+		$location->address  = Input::get('address');
+		$location->city 	= Input::get('city');
+		$location->state 	= Input::get('state');
+		$location->zip 	 	= Input::get('zip');
+		$location->user_id	= Auth::id();
+
+		$location->save();
 
 		return Redirect::route('locations.index');
 	}
@@ -68,9 +78,15 @@ class LocationsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$location = Location::find($id);
+		if(Auth::id() == 1) {
 
-		return View::make('locations.edit', compact('location'));
+			$location = Location::find($id);
+			return View::make('locations.edit', compact('location'));
+		} else {
+
+			Session::flash('errorMessage', 'You are not authorized to access that page.');
+			return Redirect::route('locations.index');
+		}
 	}
 
 	/**
@@ -87,12 +103,22 @@ class LocationsController extends BaseController {
 
 		if ($validator->fails())
 		{
+			Session::flash('errorMessage', 'Hmm...something went wrong. Please check the error messages below.');
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		$location->update($data);
+		$location->place = Input::get('place');
+		$location->address = Input::get('address');
+		$location->city = Input::get('city');
+		$location->state = Input::get('state');
+		$location->zip = Input::get('zip');
+		$location->save();
 
-		return Redirect::route('locations.index');
+		Log::info('Location ' . $location->id . ' successfully updated.');
+
+		Session::flash('successMessage', 'Location successfully updated.');
+
+		return Redirect::action('LocationsController@show', $location->id);
 	}
 
 	/**

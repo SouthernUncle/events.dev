@@ -47,6 +47,14 @@
 		</tbody>
 	</table>
 
+	@if(Auth::id() == 1)
+		<a href="{{{ action('LocationsController@edit', $location->id) }}}">
+			<button class="btn btn-default">
+				Edit >>
+			</button>
+		</a>	
+	@endif
+
 	<h4>
 		<a href="{{{ action('CalendarEventsController@index') }}}">
 			All Upcoming Events

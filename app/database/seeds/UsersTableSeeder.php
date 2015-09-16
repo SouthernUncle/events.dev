@@ -14,7 +14,6 @@ class UsersTableSeeder extends Seeder {
 			'last_name'  => $_ENV['USER_LASTNAME'],
 			'email'      => $_ENV['USER_EMAIL'],
 			'password'   => $_ENV['USER_PASSWORD'],
-			'password_confirmation'   => $_ENV['USER_PASSWORD'],
 		]);
 
 		$faker = Faker::create('en_EN');
@@ -28,7 +27,6 @@ class UsersTableSeeder extends Seeder {
 				'last_name'  => $faker->lastName,
 				'email'      => $faker->freeEmail,
 				'password'   => $_ENV['USER_PASSWORD'],
-				'password_confirmation'   => $_ENV['USER_PASSWORD'],
 			]);
 		}
 	}

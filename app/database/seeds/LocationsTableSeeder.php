@@ -18,6 +18,7 @@ class LocationsTableSeeder extends Seeder {
 				'city' => $faker->city,
 				'state' => $faker->stateAbbr,
 				'zip' => $faker->numberBetween($min = 12345, $max = 96543),
+				'user_id' => 1,
 			]);
 		}
 	}
