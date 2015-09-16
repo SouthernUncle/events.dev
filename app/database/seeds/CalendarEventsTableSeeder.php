@@ -15,7 +15,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 15;
 		$ce->location_id = 1;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/lydia.jpg';
+		$ce->img_url	 = 'lydia.jpg';
 		$ce->save();
 
 		// Black Lips
@@ -32,7 +32,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 16;
 		$ce->location_id = 1;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/blacklips.jpg';
+		$ce->img_url	 = 'blacklips.jpg';
 		$ce->save();
 
 		// Swervedriver
@@ -45,7 +45,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 15;
 		$ce->location_id = 1;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/swervedriver.jpg';
+		$ce->img_url	 = 'swervedriver.jpg';
 		$ce->save();
 
 		// Dirty Fences
@@ -56,7 +56,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 10;
 		$ce->location_id = 1;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/dirtyfences.jpg';
+		$ce->img_url	 = 'dirtyfences.jpg';
 		$ce->save();
 
 
@@ -141,7 +141,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 13;
 		$ce->location_id = 2;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/toxicholocaust.jpg';
+		$ce->img_url	 = 'toxicholocaust.jpg';
 		$ce->save();
 
 
@@ -156,7 +156,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 49.50;
 		$ce->location_id = 3;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/cetera.jpg';
+		$ce->img_url	 = 'cetera.jpg';
 		$ce->save();
 
 		// Buttercup
@@ -177,7 +177,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 75;
 		$ce->location_id = 3;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/beachboys.jpg';
+		$ce->img_url	 = 'beachboys.jpg';
 		$ce->save();
 
 		// Pepe Aguilar
@@ -190,7 +190,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 139;
 		$ce->location_id = 3;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/pepe.jpg';
+		$ce->img_url	 = 'pepe.jpg';
 		$ce->save();
 
 
@@ -207,7 +207,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 115;
 		$ce->location_id = 4;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/torikelly.jpg';
+		$ce->img_url	 = 'torikelly.jpg';
 		$ce->save();
 
 		// Chief Keef
@@ -218,7 +218,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 37;
 		$ce->location_id = 4;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/keef.jpg';
+		$ce->img_url	 = 'keef.jpg';
 		$ce->save();
 
 		// Andy Mineo
@@ -229,7 +229,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 33;
 		$ce->location_id = 4;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/mineo.jpg';
+		$ce->img_url	 = 'mineo.jpg';
 		$ce->save();
 
 
@@ -258,7 +258,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 18;
 		$ce->location_id = 6;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/slum.jpg';
+		$ce->img_url	 = 'slum.jpg';
 		$ce->save();
 
 		// Lil Durk
@@ -270,7 +270,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 17;
 		$ce->location_id = 6;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/durk.jpg';
+		$ce->img_url	 = 'durk.jpg';
 		$ce->save();
 
 		// Trivium + Tremonti
@@ -287,7 +287,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 27;
 		$ce->location_id = 6;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/trivium.jpg';
+		$ce->img_url	 = 'trivium.jpg';
 		$ce->save();
 
 		// Thundercat
@@ -299,7 +299,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 16;
 		$ce->location_id = 6;
 		$ce->user_id	 = 1;
-		$ce->img_url	 = '/img/thundercat.jpg';
+		$ce->img_url	 = 'thundercat.jpg';
 		$ce->save();
 
 
@@ -333,7 +333,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 50;
 		$ce->location_id = 7;
 		$ce->user_id	 = 1;
-		$ce->img_url 	 = '/img/civil.jpg';
+		$ce->img_url 	 = 'civil.jpg';
 		$ce->save();
 
 
@@ -346,7 +346,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 85;
 		$ce->location_id = 8;
 		$ce->user_id	 = 1;
-		$ce->img_url 	 = '/img/richie.jpg';
+		$ce->img_url 	 = 'richie.jpg';
 		$ce->save();
 
 		// Meat Loaf
@@ -357,7 +357,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 125;
 		$ce->location_id = 8;
 		$ce->user_id	 = 1;
-		$ce->img_url 	 = '/img/meatloaf.jpg';
+		$ce->img_url 	 = 'meatloaf.jpg';
 		$ce->save();
 
 		// Liza Minnelli
@@ -368,7 +368,7 @@ class CalendarEventsTableSeeder extends Seeder {
 		$ce->price 		 = 150;
 		$ce->location_id = 8;
 		$ce->user_id	 = 1;
-		$ce->img_url 	 = '/img/liza.jpg';
+		$ce->img_url 	 = 'liza.jpg';
 		$ce->save();
 
 
