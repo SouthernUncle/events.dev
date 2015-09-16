@@ -1,6 +1,5 @@
 <?php
 
-use \Esensi\Model\Model;
 use Carbon\Carbon as Carbon;
 
 class CalendarEvent extends Eloquent {
@@ -25,7 +24,7 @@ class CalendarEvent extends Eloquent {
 
 	public function eventUsers()
     {
-	    return $this->belongsToMany('EventUser')->withTimestamps();
+	    return $this->belongsToMany('User')->withTimestamps();
     }
 
 
