@@ -20,7 +20,7 @@
 {{ Form::text('title', null, ['class' => 'form-control']) }}
 
 <label for="description">Description</label>
-        
+
 <div class="wmd-panel">
     <div id="wmd-button-bar"></div>
     <textarea class="wmd-input form-control" name="description" cols="50" rows="10" id="wmd-input">{{ $calendarEvent->description }}</textarea>
@@ -38,11 +38,6 @@
 
 <label for="location">Location</label>
 <div>
-    {{-- <select class="form-control" name="location">
-        @foreach ($locations as $location)
-            <option value="{{{ $location->id }}}">{{{ $location->place }}}</option>
-        @endforeach
-    </select> --}}
     {{ Form::select('location', $locations, $calendarEvent->location->id, array('class' => 'form-control'))}}
 </div>
 
