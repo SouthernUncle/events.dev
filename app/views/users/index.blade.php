@@ -35,9 +35,17 @@
 		</tbody>
 	</table>
 	
-	<h4>
+	<h3>
 		<a href="{{{ action('CalendarEventsController@index') }}}">
 			Upcoming Events
 		</a>
-	</h4>
+	</h3>
+
+	@if(!Auth::check())
+		<a href="{{{ action('UsersController@create') }}}">
+			<button class="btn btn-default">
+				Register
+			</button>
+		</a>	
+	@endif
 @stop

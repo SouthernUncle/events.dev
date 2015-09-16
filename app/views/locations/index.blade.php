@@ -15,6 +15,7 @@
 				<th>Venue</th>
 				<th>Location</th>
 				<th>City</th>
+				<th>Zip</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,11 +29,22 @@
 				<td>
 					{{{ $l->address }}}
 				</td>
-				<td>{{{ $l->city }}}, {{{ $l->state }}}</td>
+				<td>
+					{{{ $l->city }}}, {{{ $l->state }}}
+				</td>
+				<td>
+					{{{ $l->zip }}}
+				</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
+	
+	<h3>
+		<a href="{{{ action('CalendarEventsController@index') }}}">
+			Upcoming Events
+		</a>
+	</h3>
 
 	@if(Auth::id() == 1)
 		<a href="{{{ action('LocationsController@create') }}}">
@@ -41,10 +53,4 @@
 			</button>
 		</a>	
 	@endif
-	
-	<h4>
-		<a href="{{{ action('CalendarEventsController@index') }}}">
-			Upcoming Events
-		</a>
-	</h4>
 @stop

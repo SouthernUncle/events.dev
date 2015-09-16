@@ -1,8 +1,8 @@
 <?php
 
-class Attendee extends Eloquent {
+class EventUser extends Eloquent {
 
-	protected $table = 'calendar_event_user';
+	protected $table = 'event_users';
 
 	/**
 	 * Relationships

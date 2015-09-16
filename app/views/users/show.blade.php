@@ -13,11 +13,11 @@
 @section('image_url', '/img/concerts2.jpg')
 
 @section('content')
-	<h3>Member Since:</h3>
-	<h4>{{{ $user->created_at->setTimezone('America/Chicago')->format('l, F jS Y') }}}</h4>
+	<h2>Member Since:</h2>
+	<h3>{{{ $user->created_at->setTimezone('America/Chicago')->format('l, F jS Y') }}}</h3>
 
-	<h3>Email:</h3>
-	<h4>{{{ $user->email }}}</h4>
+	<h2>Email:</h2>
+	<h3>{{{ $user->email }}}</h3>
 
 	@if(Auth::check() && Auth::id() == $user->id)
 
@@ -26,30 +26,31 @@
 	    </a>
 	    
 	    <button class="btn btn-default" id="delete">Delete >></button>
+	    <hr>
     @endif
+	<h3>
+		<a href="{{{ action('UsersController@index') }}}">
+			All Users
+		</a>
+	</h3>
+	<hr>
 
     {{ Form::open(array('action' => array('UsersController@destroy', $user->id), 'method' => 'DELETE', 'id' => 'formDelete')) }}
     {{ Form::close() }}
 
-	<h3>Events Created:</h3>
+	<h2>Events Created:</h2>
 	@foreach ($calendarEvents as $ce)
-		<h4>
+		<h3>
 			<a href="{{{ action('CalendarEventsController@show', $ce->id) }}}">
 				{{{ $ce->title }}}
 			</a>
-		</h4>
-		<h5>{{{ CalendarEvent::formatDate($ce->start)->format('D. M. jS, Y') }}}</h5>
-		<h5>{{{ $ce->location->place }}}</h5>
-		<h5>{{{ $ce->location->city }}}, {{{ $ce->location->state }}}</h5>
+		</h3>
+		<h4>{{{ CalendarEvent::formatDate($ce->start)->format('D. M. jS, Y') }}}</h4>
+		<h4>{{{ $ce->location->place }}}</h4>
+		<h4>{{{ $ce->location->city }}}, {{{ $ce->location->state }}} {{{ $ce->location->zip }}}</h4>
 		<hr>
 
 	@endforeach
-
-	<h4>
-		<a href="{{{ action('UsersController@index') }}}">
-			All Users
-		</a>
-	</h4>
 @stop
 
 @section('js')
