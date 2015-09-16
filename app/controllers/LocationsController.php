@@ -65,9 +65,11 @@ class LocationsController extends BaseController {
 		$query 	  		  = CalendarEvent::with('location');
 		$calendarEvents	  = $query->where('location_id', $location->id)->orderBy('start')->get();
 
-		// dd($calendarEvents);
+		$qstring = $location->place . ' ' . $location->city . ' ' . $location->state;
+		$qstring = implode('%20', explode(' ', $qstring));
+		// dd($qstring);
 
-		return View::make('locations.show', compact('location', 'calendarEvents'));
+		return View::make('locations.show', compact('location', 'calendarEvents', 'qstring'));
 	}
 
 	/**
