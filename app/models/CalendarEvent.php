@@ -23,7 +23,7 @@ class CalendarEvent extends Eloquent {
 	    return $this->belongsTo('Location');
 	}
 
-	public function eventUser()
+	public function eventUsers()
     {
 	    return $this->belongsToMany('EventUser')->withTimestamps();
     }
