@@ -25,15 +25,36 @@
 			{{{ $ce->location->place }}}
 		</a>
 	</h3>
+	<h4>{{{ CalendarEvent::formatDate($ce->start)->format('l, F jS Y @ g A') }}}</h4>
+	<h3>${{{ $ce->price }}}</h3>
+
+	{{ $ce->description }}
+
+	<p>
+		<a href="">
+			RSVP
+		</a>
+	</p>
+
 	<h5>Hosted by: 
 		<a href="{{{ action('UsersController@show', $ce->user->id) }}}">
 			{{{ $ce->user->username }}}
 		</a>
 	</h5>
 
-	{{ $ce->description }}
-	<h4>{{{ CalendarEvent::formatDate($ce->start)->format('l, F jS Y @ g A') }}}</h4>
+	{{-- <h5>Going:</h5>
+	<h5>
+		@foreach($ce->eventUsers as $eu)
+			{{{  $eu->username }}}
+		@endforeach
+	</h5> --}}
 
+	<h3>
+		<a href="{{{ action('CalendarEventsController@index') }}}">
+			Upcoming Events
+		</a>
+	</h3>
+	
 	@if(Auth::check() && Auth::id() == $ce->user->id)
 
 	    <a href="{{{ action('CalendarEventsController@edit', $ce->id) }}}">
@@ -45,17 +66,6 @@
 
     {{ Form::open(array('action' => array('CalendarEventsController@destroy', $ce->id), 'method' => 'DELETE', 'id' => 'formDelete')) }}
     {{ Form::close() }}
-
-	<p>
-		<a href="">
-			RSVP
-		</a>
-	</p>
-	<h4>
-		<a href="{{{ action('CalendarEventsController@index') }}}">
-			Upcoming Events
-		</a>
-	</h4>
 @stop
 
 @section('js')

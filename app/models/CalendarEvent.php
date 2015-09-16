@@ -23,12 +23,21 @@ class CalendarEvent extends Eloquent {
 	    return $this->belongsTo('Location');
 	}
 
+	public function eventUsers()
+    {
+	    return $this->belongsToMany('EventUser')->withTimestamps();
+    }
+
+
+	/**
+	 * Date Format
+	 *
+	 */
 	public static function formatDate($date)
 	{
 		$newDate = Carbon::createFromFormat('Y-m-d H:i:s', $date);
 
 		return $newDate;
-
 	}
 
 	/**

@@ -54,6 +54,8 @@
 			[
 				'class' 	  => 'form-control', 
 				'placeholder' => '{{{ $location->zip }}}',
+				'min'		  => 501,
+				'max'		  => 99950,	
 			])
 		}}
 

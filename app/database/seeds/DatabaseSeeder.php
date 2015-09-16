@@ -14,10 +14,13 @@ class DatabaseSeeder extends Seeder {
 		DB::table('calendar_events')->delete();
 		DB::table('locations')->delete();
 		DB::table('users')->delete();
+		DB::table('event_users')->delete();
+
 
 		$this->call('UsersTableSeeder');
 		$this->call('LocationsTableSeeder');
 		$this->call('CalendarEventsTableSeeder');
+		$this->call('EventUsersTableSeeder');
 	}
 
 }

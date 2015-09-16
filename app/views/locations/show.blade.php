@@ -53,6 +53,12 @@ src="https://www.google.com/maps/embed/v1/search?q={{ $qstring }}&key=AIzaSyBJc2
 		</tbody>
 	</table>
 
+	<h3>
+		<a href="{{{ action('CalendarEventsController@index') }}}">
+			All Events
+		</a>
+	</h3>
+
 	@if(Auth::id() == 1)
 		<a href="{{{ action('LocationsController@edit', $location->id) }}}">
 			<button class="btn btn-default">
@@ -60,10 +66,4 @@ src="https://www.google.com/maps/embed/v1/search?q={{ $qstring }}&key=AIzaSyBJc2
 			</button>
 		</a>	
 	@endif
-
-	<h4>
-		<a href="{{{ action('CalendarEventsController@index') }}}">
-			All Upcoming Events
-		</a>
-	</h4>
 @stop

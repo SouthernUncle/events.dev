@@ -10,7 +10,6 @@
 {{ HTML::style('/css/bootstrap.min.css'); }}
 
 <!-- Optional theme -->
-{{ HTML::style('/css/bootstrap-theme.min.css'); }}
 {{ HTML::style('/css/jquery-ui.css'); }}
 
 <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
