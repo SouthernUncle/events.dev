@@ -36,11 +36,11 @@ Resource Controllers:
 - LocationsController
 
 Bonus
-- Event image
-- Add Lat/Lon to location
-- Show Google map of event location
-- Add weather forecast 
-- Allow registration for events
+- Event image // DONE
+- Add Lat/Lon to location // WHY
+- Show Google map of event location // DONE
+- Add weather forecast // UGH
+- Allow registration for events // @TODO
 - User roles
 
 Steps:

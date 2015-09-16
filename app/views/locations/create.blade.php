@@ -53,7 +53,9 @@
 			[
 				'class' 	  => 'form-control',
 				'placeholder' => '78212', 
-				'value'		  => '{{{ Input::old("zip") }}}'
+				'value'		  => '{{{ Input::old("zip") }}}',
+				'min'		  => 501,
+				'max'		  => 99950,	
 			])
 		}}
 

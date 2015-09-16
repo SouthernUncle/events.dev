@@ -12,7 +12,13 @@
 <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
 
 {{ Form::label('price', 'Price ($)') }}
-{{ Form::number('price', null, ['class' => 'form-control']) }}
+{{ Form::number('price', null, 
+	[
+		'class' => 'form-control',
+		'min'   => 0,
+		'max'   => 200,
+	])
+}}
 
 <label for="start">Date and Time</label>
 <div>

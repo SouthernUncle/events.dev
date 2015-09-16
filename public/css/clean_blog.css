@@ -427,8 +427,8 @@ form .row:first-child .floating-label-form-group {
     font-size:14px;
     font-weight:800;
     letter-spacing:1px;
-    border-radius:0;
-    padding:15px 25px
+    border-radius: 0;
+    padding:15px 25px;
 }
 
 .btn-lg {
@@ -436,7 +436,8 @@ form .row:first-child .floating-label-form-group {
     padding:25px 35px
 }
 
-.btn-default:hover,.btn-default:focus {
+.btn-default:hover,
+.btn-default:focus {
     background-color:#0085a1;
     border:1px solid #0085a1;
     color:#fff
@@ -534,15 +535,6 @@ body {
 .grey {
     color: #BBB;
 }
-
-.btn {
-    padding: 14px 24px;
-    border: 0 none;
-    border-radius: 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
  
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
@@ -571,4 +563,9 @@ body {
     box-shadow: none;
     margin-bottom: -3px;
     margin-top: 3px;
+}
+
+.btn-group>.btn {
+    margin: 5px;
+    border-radius: 20%;
 }
