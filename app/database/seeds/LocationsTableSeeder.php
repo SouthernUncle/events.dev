@@ -59,7 +59,7 @@ class LocationsTableSeeder extends Seeder {
 
 		$location = new Location();
 		$location->user_id = 1;
-		$location->place = 'Alamo City Music Hall';
+		$location->place = 'Backstage Live';
 		$location->address = '1305 E Houston St';
 		$location->city = 'San Antonio';
 		$location->state = 'TX';
