@@ -125,10 +125,32 @@ class CalendarEventsController extends BaseController {
 				$ce->img_url = "/uploads/images/$basename";
 			}
 
-			return View::make('calendarEvents.show', compact('ce'));
+			if($ce->user->eventsAttending($id)) {
+				$attending = true;
+			} else {
+				$attending = false;
+			}
+
+			return View::make('calendarEvents.show', compact('ce', 'attending'));
 		}
 
 		App::abort(404);
+	}
+
+	public function registerForEvent($id)
+	{
+		$u = User::find(Auth::id());
+		$u->eventsAttending()->attach($id);
+		
+		return Redirect::route('calendarEvents.show', $id);
+	}
+
+	public function unRegisterFromEvent($id)
+	{
+		$u = User::find(Auth::id());
+		$u->eventsAttending()->detach($id);
+		
+		return Redirect::route('calendarEvents.show', $id);
 	}
 
 	/**
@@ -200,5 +222,4 @@ class CalendarEventsController extends BaseController {
 
 		return Redirect::route('calendarEvents.index');
 	}
-
 }

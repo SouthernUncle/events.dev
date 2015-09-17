@@ -22,13 +22,17 @@ Route::get('/login', 'HomeController@showLogin');
 Route::get('/logout', 'HomeController@doLogout');
 
 // PAST EVENTS
-Route::get('calendarEvents/past', 'CalendarEventsController@past');
+Route::get('/calendarEvents/past', 'CalendarEventsController@past');
 
+// RSVP
+Route::get('/rsvp/{id}', 'CalendarEventsController@registerForEvent');
+
+// UN RSVP
+Route::get('/unrsvp/{id}', 'CalendarEventsController@unRegisterFromEvent');
 
 // POST
 // LOGIN
 Route::post('login', 'HomeController@doLogin');
-
 
 // RESOURCE
 // CALENDAR EVENT

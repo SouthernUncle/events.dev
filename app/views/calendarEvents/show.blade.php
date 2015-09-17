@@ -30,11 +30,20 @@
 
 	{{ $ce->description }}
 
+	
 	<p>
-		<a href="">
+		<a href="{{{ action('CalendarEventsController@unRegisterFromEvent', $ce->id) }}}">
+			Decline RSVP
+		</a>
+	</p>
+	
+	<p>
+		<a href="{{{ action('CalendarEventsController@registerForEvent', $ce->id) }}}">
 			RSVP
 		</a>
 	</p>
+	
+
 
 	<h5>Hosted by: 
 		<a href="{{{ action('UsersController@show', $ce->user->id) }}}">
