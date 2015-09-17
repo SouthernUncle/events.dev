@@ -42,12 +42,12 @@
 		</a>
 	</h5>
 
-	{{-- <h5>Going:</h5>
-	<h5>
-		@foreach($ce->eventUsers as $eu)
-			{{{  $eu->username }}}
-		@endforeach
-	</h5> --}}
+	<h4>Going:</h4>
+	
+	@foreach($ce->eventusers as $user)
+		<h5>{{{  $user->username }}}</h5>
+	@endforeach
+	
 
 	<h3>
 		<a href="{{{ action('CalendarEventsController@index') }}}">

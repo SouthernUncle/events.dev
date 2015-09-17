@@ -11,7 +11,7 @@ class CalendarEventsController extends BaseController {
 	 */
 	public function index()
 	{
-		$query = CalendarEvent::with('location', 'user')->where('start', '>', Carbon::now());
+		$query = CalendarEvent::with('location', 'user', 'eventusers')->where('start', '>', Carbon::now());
 
 		$search = Input::get('search');
 
