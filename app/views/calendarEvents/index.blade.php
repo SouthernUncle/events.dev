@@ -8,7 +8,7 @@
 
 @section('heading', 'LIVE')
 
-@section('subheading', 'Awesome Music in Awesome Venues')
+@section('subheading', 'Awesome Music in San Antonio, TX')
 
 @section('image_url', '/img/concerts1.jpg')
 
@@ -21,7 +21,6 @@
 				<th>Venue</th>
 				<th>Date</th>
 				<th>Time</th>
-				<th>City</th>
 
 			</tr>
 		</thead>
@@ -42,7 +41,6 @@
 				</td>
 				<td>{{{ CalendarEvent::formatDate($ce->start)->format('D. M. jS, Y') }}}</td>
 				<td>{{{ CalendarEvent::formatDate($ce->start)->format('g A') }}}</td>
-				<td>{{{ $ce->location->city }}}, {{{ $ce->location->state }}}</td>
 			</tr>
 			@endforeach
 		</tbody>
