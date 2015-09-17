@@ -8,54 +8,38 @@ class CalendarEventUserTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 1;
-			$ceu->save();
+			$u = User::find(1);
+			$u->eventsAttending()->attach($index);
 
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 2;
-			$ceu->save();
+			$u = User::find(2);
+			$u->eventsAttending()->attach($index);
 		}
 
 		foreach(range(11, 20) as $index)
 		{
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 3;
-			$ceu->save();
+			$u = User::find(3);
+			$u->eventsAttending()->attach($index);
 
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 4;
-			$ceu->save();
+			$u = User::find(4);
+			$u->eventsAttending()->attach($index);
 		}
 
 		foreach(range(21, 28) as $index)
 		{
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 1;
-			$ceu->save();
+			$u = User::find(1);
+			$u->eventsAttending()->attach($index);
 
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 4;
-			$ceu->save();
+			$u = User::find(4);
+			$u->eventsAttending()->attach($index);
 		}
 
 		foreach(range(29, 33) as $index)
 		{
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 3;
-			$ceu->save();
+			$u = User::find(3);
+			$u->eventsAttending()->attach($index);
 
-			$ceu = new CalendarEventUser();
-			$ceu->calendar_event_id  = $index;
-			$ceu->user_id  = 2;
-			$ceu->save();
+			$u = User::find(2);
+			$u->eventsAttending()->attach($index);
 		}
 	}
 
