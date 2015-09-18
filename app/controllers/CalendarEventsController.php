@@ -125,13 +125,9 @@ class CalendarEventsController extends BaseController {
 				$ce->img_url = "/uploads/images/$basename";
 			}
 
-			if($ce->user->eventsAttending($id)) {
-				$attending = true;
-			} else {
-				$attending = false;
-			}
+			$count = $ce->eventUsers()->count();	
 
-			return View::make('calendarEvents.show', compact('ce', 'attending'));
+			return View::make('calendarEvents.show', compact('ce', 'count'));
 		}
 
 		App::abort(404);
@@ -141,7 +137,8 @@ class CalendarEventsController extends BaseController {
 	{
 		$u = User::find(Auth::id());
 		$u->eventsAttending()->attach($id);
-		
+
+		Session::flash('successMessage', 'Event signup was sucessfull!');
 		return Redirect::route('calendarEvents.show', $id);
 	}
 
@@ -150,6 +147,7 @@ class CalendarEventsController extends BaseController {
 		$u = User::find(Auth::id());
 		$u->eventsAttending()->detach($id);
 		
+		Session::flash('successMessage', 'You have declined your RSVP successfully.');
 		return Redirect::route('calendarEvents.show', $id);
 	}
 
