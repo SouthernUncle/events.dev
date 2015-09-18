@@ -133,21 +133,35 @@ class CalendarEventsController extends BaseController {
 		App::abort(404);
 	}
 
+	// !$cart->items->contains($newItem->id)
+
 	public function registerForEvent($id)
 	{
 		$u = User::find(Auth::id());
-		$u->eventsAttending()->attach($id);
 
-		Session::flash('successMessage', 'Event signup was sucessfull!');
+		if(!$u->eventsAttending->contains($id)) {
+			$u->eventsAttending()->attach($id);
+
+			Session::flash('successMessage', 'Event signup was sucessfull!');
+		} else {
+			Session::flash('errorMessage', 'You can only RSVP once to this event.');
+		}
+
 		return Redirect::route('calendarEvents.show', $id);
 	}
 
 	public function unRegisterFromEvent($id)
 	{
 		$u = User::find(Auth::id());
-		$u->eventsAttending()->detach($id);
+
+		if($u->eventsAttending->contains($id)) {
+			$u->eventsAttending()->detach($id);
+			
+			Session::flash('successMessage', 'You have declined your RSVP successfully.');
+		} else {
+			Session::flash('errorMessage', 'You cannot un-RSVP to an event you are not attending.');	
+		}
 		
-		Session::flash('successMessage', 'You have declined your RSVP successfully.');
 		return Redirect::route('calendarEvents.show', $id);
 	}
 
