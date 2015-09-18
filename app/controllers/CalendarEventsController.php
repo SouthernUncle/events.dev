@@ -11,7 +11,7 @@ class CalendarEventsController extends BaseController {
 	 */
 	public function index()
 	{
-		$query = CalendarEvent::with('location', 'user', 'eventusers')->where('start', '>', Carbon::now());
+		$query = CalendarEvent::with('location', 'user', 'eventusers')->where('start', '>', Carbon::now('America/Chicago'));
 
 		$search = Input::get('search');
 
@@ -37,7 +37,7 @@ class CalendarEventsController extends BaseController {
 
 	public function past()
 	{
-		$query = CalendarEvent::with('location', 'user')->where('start', '<', Carbon::now());
+		$query = CalendarEvent::with('location', 'user')->where('start', '<', Carbon::now('America/Chicago'));
 
 		$pastEvents = $query->orderBy('start', 'desc')->get();
 
