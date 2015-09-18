@@ -30,32 +30,35 @@
 
 	{{ $ce->description }}
 
-	
-	<p>
-		<a href="{{{ action('CalendarEventsController@unRegisterFromEvent', $ce->id) }}}">
-			Decline RSVP
-		</a>
-	</p>
-	
-	<p>
-		<a href="{{{ action('CalendarEventsController@registerForEvent', $ce->id) }}}">
-			RSVP
-		</a>
-	</p>
-	
+	@if(Auth::check())
+			@if($ce->eventUsers->contains(Auth::id()))
+				<a href="{{{ action('CalendarEventsController@unRegisterFromEvent', $ce->id) }}}">
+					<button class="btn btn-inverse">
+						Decline RSVP
+					</button>
+				</a>
+			@else
+				<a href="{{{ action('CalendarEventsController@registerForEvent', $ce->id) }}}">
+					<button class="btn btn-success">
+						RSVP
+					</button>
+				</a>
+			@endif
+	@endif
 
-
-	<h5>Hosted by: 
+	<h4>Hosted by: 
 		<a href="{{{ action('UsersController@show', $ce->user->id) }}}">
 			{{{ $ce->user->username }}}
 		</a>
-	</h5>
+	</h4>
 
-	<h4>Going:</h4>
-	
-	@foreach($ce->eventusers as $user)
-		<h5>{{{  $user->username }}}</h5>
-	@endforeach
+	@if($count > 0)
+		<h3>Going: {{{ $count }}}</h3>
+		
+		@foreach($ce->eventusers as $user)
+			<h5>{{{  $user->username }}}</h5>
+		@endforeach
+	@endif
 	
 
 	<h3>
