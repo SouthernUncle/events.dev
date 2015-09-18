@@ -5,6 +5,16 @@ use Carbon\Carbon as Carbon;
 class CalendarEventsController extends BaseController {
 
 	/**
+	 * Set up filters.
+	 *
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->beforeFilter('auth', array('except' => array('index', 'show', 'past')));	
+	}
+
+	/**
 	 * Display a listing of calendarEvents
 	 *
 	 * @return Response

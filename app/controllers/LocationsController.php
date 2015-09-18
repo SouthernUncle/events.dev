@@ -3,6 +3,16 @@
 class LocationsController extends BaseController {
 
 	/**
+	 * Set up filters.
+	 *
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->beforeFilter('auth', array('except' => array('index', 'show')));	
+	}
+
+	/**
 	 * Display a listing of locations
 	 *
 	 * @return Response
