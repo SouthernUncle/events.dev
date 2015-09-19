@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-    @include('layouts.head')
+    @include('layouts.partials.head')
 </head>
 <body ng-app="blog">
 
-    @include('layouts.nav')
+    @include('layouts.partials.nav')
     
-    @include('layouts.header')
+    @include('layouts.partials.header')
 
-    @include('layouts.main_errors')
+    @include('layouts.partials.main_errors')
 
-    @include('layouts.footer')
+    @include('layouts.partials.footer')
 
-    @include('layouts.script')
+    @include('layouts.partials.script')
 
 </body>
 </html>
